@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2270E8DD1F301CD200979959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8DC1F301CD200979959 /* AppDelegate.swift */; };
+		2270E8DF1F301CD200979959 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8DE1F301CD200979959 /* FirstViewController.swift */; };
+		2270E8E11F301CD200979959 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8E01F301CD200979959 /* SecondViewController.swift */; };
+		2270E8E41F301CD200979959 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2270E8E21F301CD200979959 /* Main.storyboard */; };
+		2270E8E61F301CD200979959 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2270E8E51F301CD200979959 /* Assets.xcassets */; };
+		2270E8E91F301CD300979959 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2270E8E71F301CD200979959 /* LaunchScreen.storyboard */; };
+		2270E8F41F301CD300979959 /* JLAlarmClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8F31F301CD300979959 /* JLAlarmClockTests.swift */; };
+		2270E8FF1F301CD300979959 /* JLAlarmClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8FE1F301CD300979959 /* JLAlarmClockUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2270E8F01F301CD300979959 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2270E8D11F301CD200979959 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2270E8D81F301CD200979959;
+			remoteInfo = JLAlarmClock;
+		};
+		2270E8FB1F301CD300979959 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2270E8D11F301CD200979959 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2270E8D81F301CD200979959;
+			remoteInfo = JLAlarmClock;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2270E8D91F301CD200979959 /* JLAlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLAlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2270E8DC1F301CD200979959 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2270E8DE1F301CD200979959 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		2270E8E01F301CD200979959 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		2270E8E31F301CD200979959 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2270E8E51F301CD200979959 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2270E8E81F301CD200979959 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2270E8EA1F301CD300979959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2270E8EF1F301CD300979959 /* JLAlarmClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLAlarmClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2270E8F31F301CD300979959 /* JLAlarmClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockTests.swift; sourceTree = "<group>"; };
+		2270E8F51F301CD300979959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2270E8FA1F301CD300979959 /* JLAlarmClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLAlarmClockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2270E8FE1F301CD300979959 /* JLAlarmClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockUITests.swift; sourceTree = "<group>"; };
+		2270E9001F301CD300979959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2270E8D61F301CD200979959 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2270E8EC1F301CD300979959 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2270E8F71F301CD300979959 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2270E8D01F301CD200979959 = {
+			isa = PBXGroup;
+			children = (
+				2270E8DB1F301CD200979959 /* JLAlarmClock */,
+				2270E8F21F301CD300979959 /* JLAlarmClockTests */,
+				2270E8FD1F301CD300979959 /* JLAlarmClockUITests */,
+				2270E8DA1F301CD200979959 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2270E8DA1F301CD200979959 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2270E8D91F301CD200979959 /* JLAlarmClock.app */,
+				2270E8EF1F301CD300979959 /* JLAlarmClockTests.xctest */,
+				2270E8FA1F301CD300979959 /* JLAlarmClockUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2270E8DB1F301CD200979959 /* JLAlarmClock */ = {
+			isa = PBXGroup;
+			children = (
+				2270E8DC1F301CD200979959 /* AppDelegate.swift */,
+				2270E8DE1F301CD200979959 /* FirstViewController.swift */,
+				2270E8E01F301CD200979959 /* SecondViewController.swift */,
+				2270E8E21F301CD200979959 /* Main.storyboard */,
+				2270E8E51F301CD200979959 /* Assets.xcassets */,
+				2270E8E71F301CD200979959 /* LaunchScreen.storyboard */,
+				2270E8EA1F301CD300979959 /* Info.plist */,
+			);
+			path = JLAlarmClock;
+			sourceTree = "<group>";
+		};
+		2270E8F21F301CD300979959 /* JLAlarmClockTests */ = {
+			isa = PBXGroup;
+			children = (
+				2270E8F31F301CD300979959 /* JLAlarmClockTests.swift */,
+				2270E8F51F301CD300979959 /* Info.plist */,
+			);
+			path = JLAlarmClockTests;
+			sourceTree = "<group>";
+		};
+		2270E8FD1F301CD300979959 /* JLAlarmClockUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2270E8FE1F301CD300979959 /* JLAlarmClockUITests.swift */,
+				2270E9001F301CD300979959 /* Info.plist */,
+			);
+			path = JLAlarmClockUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2270E8D81F301CD200979959 /* JLAlarmClock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2270E9031F301CD300979959 /* Build configuration list for PBXNativeTarget "JLAlarmClock" */;
+			buildPhases = (
+				2270E8D51F301CD200979959 /* Sources */,
+				2270E8D61F301CD200979959 /* Frameworks */,
+				2270E8D71F301CD200979959 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JLAlarmClock;
+			productName = JLAlarmClock;
+			productReference = 2270E8D91F301CD200979959 /* JLAlarmClock.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2270E8EE1F301CD300979959 /* JLAlarmClockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2270E9061F301CD300979959 /* Build configuration list for PBXNativeTarget "JLAlarmClockTests" */;
+			buildPhases = (
+				2270E8EB1F301CD300979959 /* Sources */,
+				2270E8EC1F301CD300979959 /* Frameworks */,
+				2270E8ED1F301CD300979959 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2270E8F11F301CD300979959 /* PBXTargetDependency */,
+			);
+			name = JLAlarmClockTests;
+			productName = JLAlarmClockTests;
+			productReference = 2270E8EF1F301CD300979959 /* JLAlarmClockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2270E8F91F301CD300979959 /* JLAlarmClockUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2270E9091F301CD300979959 /* Build configuration list for PBXNativeTarget "JLAlarmClockUITests" */;
+			buildPhases = (
+				2270E8F61F301CD300979959 /* Sources */,
+				2270E8F71F301CD300979959 /* Frameworks */,
+				2270E8F81F301CD300979959 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2270E8FC1F301CD300979959 /* PBXTargetDependency */,
+			);
+			name = JLAlarmClockUITests;
+			productName = JLAlarmClockUITests;
+			productReference = 2270E8FA1F301CD300979959 /* JLAlarmClockUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2270E8D11F301CD200979959 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = JasonLiu;
+				TargetAttributes = {
+					2270E8D81F301CD200979959 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+					2270E8EE1F301CD300979959 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2270E8D81F301CD200979959;
+					};
+					2270E8F91F301CD300979959 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2270E8D81F301CD200979959;
+					};
+				};
+			};
+			buildConfigurationList = 2270E8D41F301CD200979959 /* Build configuration list for PBXProject "JLAlarmClock" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2270E8D01F301CD200979959;
+			productRefGroup = 2270E8DA1F301CD200979959 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2270E8D81F301CD200979959 /* JLAlarmClock */,
+				2270E8EE1F301CD300979959 /* JLAlarmClockTests */,
+				2270E8F91F301CD300979959 /* JLAlarmClockUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2270E8D71F301CD200979959 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2270E8E91F301CD300979959 /* LaunchScreen.storyboard in Resources */,
+				2270E8E61F301CD200979959 /* Assets.xcassets in Resources */,
+				2270E8E41F301CD200979959 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2270E8ED1F301CD300979959 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2270E8F81F301CD300979959 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2270E8D51F301CD200979959 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2270E8E11F301CD200979959 /* SecondViewController.swift in Sources */,
+				2270E8DD1F301CD200979959 /* AppDelegate.swift in Sources */,
+				2270E8DF1F301CD200979959 /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2270E8EB1F301CD300979959 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2270E8F41F301CD300979959 /* JLAlarmClockTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2270E8F61F301CD300979959 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2270E8FF1F301CD300979959 /* JLAlarmClockUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2270E8F11F301CD300979959 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2270E8D81F301CD200979959 /* JLAlarmClock */;
+			targetProxy = 2270E8F01F301CD300979959 /* PBXContainerItemProxy */;
+		};
+		2270E8FC1F301CD300979959 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2270E8D81F301CD200979959 /* JLAlarmClock */;
+			targetProxy = 2270E8FB1F301CD300979959 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2270E8E21F301CD200979959 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2270E8E31F301CD200979959 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2270E8E71F301CD200979959 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2270E8E81F301CD200979959 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2270E9011F301CD300979959 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2270E9021F301CD300979959 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2270E9041F301CD300979959 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = JLAlarmClock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasonliu.JLAlarmClock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2270E9051F301CD300979959 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = JLAlarmClock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasonliu.JLAlarmClock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		2270E9071F301CD300979959 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = JLAlarmClockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasonliu.JLAlarmClockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JLAlarmClock.app/JLAlarmClock";
+			};
+			name = Debug;
+		};
+		2270E9081F301CD300979959 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = JLAlarmClockTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasonliu.JLAlarmClockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JLAlarmClock.app/JLAlarmClock";
+			};
+			name = Release;
+		};
+		2270E90A1F301CD300979959 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = JLAlarmClockUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasonliu.JLAlarmClockUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = JLAlarmClock;
+			};
+			name = Debug;
+		};
+		2270E90B1F301CD300979959 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = JLAlarmClockUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jasonliu.JLAlarmClockUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = JLAlarmClock;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2270E8D41F301CD200979959 /* Build configuration list for PBXProject "JLAlarmClock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2270E9011F301CD300979959 /* Debug */,
+				2270E9021F301CD300979959 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2270E9031F301CD300979959 /* Build configuration list for PBXNativeTarget "JLAlarmClock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2270E9041F301CD300979959 /* Debug */,
+				2270E9051F301CD300979959 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2270E9061F301CD300979959 /* Build configuration list for PBXNativeTarget "JLAlarmClockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2270E9071F301CD300979959 /* Debug */,
+				2270E9081F301CD300979959 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2270E9091F301CD300979959 /* Build configuration list for PBXNativeTarget "JLAlarmClockUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2270E90A1F301CD300979959 /* Debug */,
+				2270E90B1F301CD300979959 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2270E8D11F301CD200979959 /* Project object */;
+}
