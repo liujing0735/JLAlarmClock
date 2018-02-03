@@ -7,17 +7,27 @@
 //
 
 import UIKit
+import FSCalendar
 
-class JLCalendarTableViewController: UITableViewController {
+class JLCalendarTableViewController: JLBaseTableViewController {
 
+    var calendar: FSCalendar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.title = "日历"
+        //calendar = FSCalendar(frame: CGRect(x: 0, y: 64, width: screenWidth(), height: 300))
+        
+        let center = JLLocalNotificationCenter()
+        center.registerLocalNotification()
+        
+        let dateString = "20180202194230"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMddHHmmss"
+        let date = formatter.date(from: dateString)
+        
+        center.addLocalNotification(fireDate: date!, identifier: "identifier", alertTitle: "alertTitle", alertBody: "alertBody", alertAction: nil, alertLaunchImage: nil, soundName: nil, userInfo: nil, repeatInterval: .Hour)
     }
 
     override func didReceiveMemoryWarning() {

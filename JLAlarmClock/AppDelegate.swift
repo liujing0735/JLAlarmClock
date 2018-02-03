@@ -16,6 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let alarmClockTable = JLAlarmClockTableViewController()
+        alarmClockTable.tabBarItem.title = "闹钟"
+        alarmClockTable.tabBarItem.image = UIImage(named: "alarm_icon_getup")
+        
+        let calendarTable = JLCalendarTableViewController()
+        calendarTable.tabBarItem.title = "日历"
+        calendarTable.tabBarItem.image = UIImage(named: "alarm_icon_yearly")
+        
+        let tabBar = JLBaseTabBarController()
+        tabBar.viewControllers = [alarmClockTable,calendarTable]
+        
+        let navigation = UINavigationController(rootViewController: tabBar)
+        navigation.setNavigationBarHidden(true, animated: true)
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigation
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

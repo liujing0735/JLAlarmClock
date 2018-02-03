@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220DAD161F33029E0005867C /* JLLocalNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220DAD151F33029E0005867C /* JLLocalNotificationCenter.swift */; };
+		220DAD1A1F3306B40005867C /* JLTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220DAD191F3306B40005867C /* JLTimePickerView.swift */; };
 		2270E8DD1F301CD200979959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8DC1F301CD200979959 /* AppDelegate.swift */; };
-		2270E8DF1F301CD200979959 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8DE1F301CD200979959 /* FirstViewController.swift */; };
-		2270E8E11F301CD200979959 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8E01F301CD200979959 /* SecondViewController.swift */; };
-		2270E8E41F301CD200979959 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2270E8E21F301CD200979959 /* Main.storyboard */; };
 		2270E8E61F301CD200979959 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2270E8E51F301CD200979959 /* Assets.xcassets */; };
 		2270E8E91F301CD300979959 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2270E8E71F301CD200979959 /* LaunchScreen.storyboard */; };
 		2270E8F41F301CD300979959 /* JLAlarmClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8F31F301CD300979959 /* JLAlarmClockTests.swift */; };
 		2270E8FF1F301CD300979959 /* JLAlarmClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8FE1F301CD300979959 /* JLAlarmClockUITests.swift */; };
+		228024272025617E00AF9CD8 /* JLBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228024262025617E00AF9CD8 /* JLBaseViewController.swift */; };
+		22802429202561BD00AF9CD8 /* JLBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22802428202561BD00AF9CD8 /* JLBaseTableViewController.swift */; };
+		2280242B202561E700AF9CD8 /* JLBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2280242A202561E700AF9CD8 /* JLBaseTabBarController.swift */; };
+		22BBAA911F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA8C1F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift */; };
+		22BBAA921F42967C00242E50 /* JLAlarmClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA8D1F42967C00242E50 /* JLAlarmClockTableViewCell.swift */; };
+		22BBAA931F42967C00242E50 /* JLAlarmClockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA8E1F42967C00242E50 /* JLAlarmClockTableViewController.swift */; };
+		22BBAA941F42967C00242E50 /* JLCalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA901F42967C00242E50 /* JLCalendarTableViewController.swift */; };
+		22BBAA9A1F42EA8F00242E50 /* JLExtensionSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA991F42EA8F00242E50 /* JLExtensionSwift.swift */; };
+		CBD7D3AFC3214DB814DBD0C1 /* Pods_JLAlarmClock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CB23FA1D7DE612B6E96CA9 /* Pods_JLAlarmClock.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		220DAD151F33029E0005867C /* JLLocalNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLLocalNotificationCenter.swift; sourceTree = "<group>"; };
+		220DAD191F3306B40005867C /* JLTimePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLTimePickerView.swift; sourceTree = "<group>"; };
 		2270E8D91F301CD200979959 /* JLAlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLAlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2270E8DC1F301CD200979959 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2270E8DE1F301CD200979959 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		2270E8E01F301CD200979959 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		2270E8E31F301CD200979959 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2270E8E51F301CD200979959 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2270E8E81F301CD200979959 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2270E8EA1F301CD300979959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +56,18 @@
 		2270E8FA1F301CD300979959 /* JLAlarmClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLAlarmClockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2270E8FE1F301CD300979959 /* JLAlarmClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockUITests.swift; sourceTree = "<group>"; };
 		2270E9001F301CD300979959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		228024262025617E00AF9CD8 /* JLBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBaseViewController.swift; sourceTree = "<group>"; };
+		22802428202561BD00AF9CD8 /* JLBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBaseTableViewController.swift; sourceTree = "<group>"; };
+		2280242A202561E700AF9CD8 /* JLBaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBaseTabBarController.swift; sourceTree = "<group>"; };
+		22BBAA8C1F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLAlarmClockSettingTableViewController.swift; sourceTree = "<group>"; };
+		22BBAA8D1F42967C00242E50 /* JLAlarmClockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLAlarmClockTableViewCell.swift; sourceTree = "<group>"; };
+		22BBAA8E1F42967C00242E50 /* JLAlarmClockTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLAlarmClockTableViewController.swift; sourceTree = "<group>"; };
+		22BBAA901F42967C00242E50 /* JLCalendarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLCalendarTableViewController.swift; sourceTree = "<group>"; };
+		22BBAA951F42E0BA00242E50 /* JLAlarmClock-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JLAlarmClock-Bridging-Header.h"; sourceTree = "<group>"; };
+		22BBAA991F42EA8F00242E50 /* JLExtensionSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLExtensionSwift.swift; sourceTree = "<group>"; };
+		38CB23FA1D7DE612B6E96CA9 /* Pods_JLAlarmClock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JLAlarmClock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4835C135DC0FB60060F0B5EF /* Pods-JLAlarmClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLAlarmClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JLAlarmClock/Pods-JLAlarmClock.debug.xcconfig"; sourceTree = "<group>"; };
+		CE764E10CECF6EF14E2E3EA7 /* Pods-JLAlarmClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLAlarmClock.release.xcconfig"; path = "Pods/Target Support Files/Pods-JLAlarmClock/Pods-JLAlarmClock.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBD7D3AFC3214DB814DBD0C1 /* Pods_JLAlarmClock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C1BE3E337202F7CD03FC1E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4835C135DC0FB60060F0B5EF /* Pods-JLAlarmClock.debug.xcconfig */,
+				CE764E10CECF6EF14E2E3EA7 /* Pods-JLAlarmClock.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2270E8D01F301CD200979959 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +112,8 @@
 				2270E8F21F301CD300979959 /* JLAlarmClockTests */,
 				2270E8FD1F301CD300979959 /* JLAlarmClockUITests */,
 				2270E8DA1F301CD200979959 /* Products */,
+				1C1BE3E337202F7CD03FC1E7 /* Pods */,
+				A3AF0336DE323EA08A60221D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +130,17 @@
 		2270E8DB1F301CD200979959 /* JLAlarmClock */ = {
 			isa = PBXGroup;
 			children = (
+				228024252025615300AF9CD8 /* Base */,
+				22BBAA991F42EA8F00242E50 /* JLExtensionSwift.swift */,
 				2270E8DC1F301CD200979959 /* AppDelegate.swift */,
-				2270E8DE1F301CD200979959 /* FirstViewController.swift */,
-				2270E8E01F301CD200979959 /* SecondViewController.swift */,
-				2270E8E21F301CD200979959 /* Main.storyboard */,
+				22BBAA8B1F42967C00242E50 /* AlarmClock */,
+				22BBAA8F1F42967C00242E50 /* Calendar */,
 				2270E8E51F301CD200979959 /* Assets.xcassets */,
 				2270E8E71F301CD200979959 /* LaunchScreen.storyboard */,
 				2270E8EA1F301CD300979959 /* Info.plist */,
+				220DAD151F33029E0005867C /* JLLocalNotificationCenter.swift */,
+				220DAD191F3306B40005867C /* JLTimePickerView.swift */,
+				22BBAA951F42E0BA00242E50 /* JLAlarmClock-Bridging-Header.h */,
 			);
 			path = JLAlarmClock;
 			sourceTree = "<group>";
@@ -128,6 +163,42 @@
 			path = JLAlarmClockUITests;
 			sourceTree = "<group>";
 		};
+		228024252025615300AF9CD8 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				228024262025617E00AF9CD8 /* JLBaseViewController.swift */,
+				22802428202561BD00AF9CD8 /* JLBaseTableViewController.swift */,
+				2280242A202561E700AF9CD8 /* JLBaseTabBarController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		22BBAA8B1F42967C00242E50 /* AlarmClock */ = {
+			isa = PBXGroup;
+			children = (
+				22BBAA8D1F42967C00242E50 /* JLAlarmClockTableViewCell.swift */,
+				22BBAA8E1F42967C00242E50 /* JLAlarmClockTableViewController.swift */,
+				22BBAA8C1F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift */,
+			);
+			path = AlarmClock;
+			sourceTree = "<group>";
+		};
+		22BBAA8F1F42967C00242E50 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				22BBAA901F42967C00242E50 /* JLCalendarTableViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		A3AF0336DE323EA08A60221D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				38CB23FA1D7DE612B6E96CA9 /* Pods_JLAlarmClock.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +206,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2270E9031F301CD300979959 /* Build configuration list for PBXNativeTarget "JLAlarmClock" */;
 			buildPhases = (
+				CC0CB03FF3B2E2BF2E164BCC /* [CP] Check Pods Manifest.lock */,
 				2270E8D51F301CD200979959 /* Sources */,
 				2270E8D61F301CD200979959 /* Frameworks */,
 				2270E8D71F301CD200979959 /* Resources */,
+				02DFF2C7BFE7B20B4B0EF2E8 /* [CP] Embed Pods Frameworks */,
+				6CEF506DC8913104B077C3CD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -191,20 +265,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = JasonLiu;
 				TargetAttributes = {
 					2270E8D81F301CD200979959 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = MVU5F37333;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					2270E8EE1F301CD300979959 = {
 						CreatedOnToolsVersion = 8.3.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2270E8D81F301CD200979959;
 					};
 					2270E8F91F301CD300979959 = {
 						CreatedOnToolsVersion = 8.3.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2270E8D81F301CD200979959;
 					};
@@ -237,7 +315,6 @@
 			files = (
 				2270E8E91F301CD300979959 /* LaunchScreen.storyboard in Resources */,
 				2270E8E61F301CD200979959 /* Assets.xcassets in Resources */,
-				2270E8E41F301CD200979959 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,14 +334,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		02DFF2C7BFE7B20B4B0EF2E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JLAlarmClock/Pods-JLAlarmClock-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6CEF506DC8913104B077C3CD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JLAlarmClock/Pods-JLAlarmClock-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC0CB03FF3B2E2BF2E164BCC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2270E8D51F301CD200979959 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2270E8E11F301CD200979959 /* SecondViewController.swift in Sources */,
+				22802429202561BD00AF9CD8 /* JLBaseTableViewController.swift in Sources */,
+				220DAD161F33029E0005867C /* JLLocalNotificationCenter.swift in Sources */,
 				2270E8DD1F301CD200979959 /* AppDelegate.swift in Sources */,
-				2270E8DF1F301CD200979959 /* FirstViewController.swift in Sources */,
+				22BBAA921F42967C00242E50 /* JLAlarmClockTableViewCell.swift in Sources */,
+				220DAD1A1F3306B40005867C /* JLTimePickerView.swift in Sources */,
+				22BBAA941F42967C00242E50 /* JLCalendarTableViewController.swift in Sources */,
+				22BBAA931F42967C00242E50 /* JLAlarmClockTableViewController.swift in Sources */,
+				22BBAA9A1F42EA8F00242E50 /* JLExtensionSwift.swift in Sources */,
+				2280242B202561E700AF9CD8 /* JLBaseTabBarController.swift in Sources */,
+				22BBAA911F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift in Sources */,
+				228024272025617E00AF9CD8 /* JLBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,14 +433,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2270E8E21F301CD200979959 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2270E8E31F301CD200979959 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2270E8E71F301CD200979959 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -329,7 +454,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -337,7 +464,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -360,7 +491,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -380,7 +511,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -388,7 +521,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -405,7 +542,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -416,25 +553,38 @@
 		};
 		2270E9041F301CD300979959 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4835C135DC0FB60060F0B5EF /* Pods-JLAlarmClock.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = MVU5F37333;
 				INFOPLIST_FILE = JLAlarmClock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jasonliu.JLAlarmClock;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trudian.JLAlarmClock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "JLAlarmClock/JLAlarmClock-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		2270E9051F301CD300979959 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE764E10CECF6EF14E2E3EA7 /* Pods-JLAlarmClock.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = MVU5F37333;
 				INFOPLIST_FILE = JLAlarmClock/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jasonliu.JLAlarmClock;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trudian.JLAlarmClock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "JLAlarmClock/JLAlarmClock-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -447,7 +597,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonliu.JLAlarmClockTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JLAlarmClock.app/JLAlarmClock";
 			};
 			name = Debug;
@@ -461,7 +612,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonliu.JLAlarmClockTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JLAlarmClock.app/JLAlarmClock";
 			};
 			name = Release;
@@ -474,7 +626,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonliu.JLAlarmClockUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = JLAlarmClock;
 			};
 			name = Debug;
@@ -487,7 +640,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasonliu.JLAlarmClockUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = JLAlarmClock;
 			};
 			name = Release;
@@ -511,6 +665,7 @@
 				2270E9051F301CD300979959 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2270E9061F301CD300979959 /* Build configuration list for PBXNativeTarget "JLAlarmClockTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +674,7 @@
 				2270E9081F301CD300979959 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2270E9091F301CD300979959 /* Build configuration list for PBXNativeTarget "JLAlarmClockUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +683,7 @@
 				2270E90B1F301CD300979959 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

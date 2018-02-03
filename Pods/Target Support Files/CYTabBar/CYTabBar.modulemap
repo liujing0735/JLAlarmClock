@@ -1,0 +1,6 @@
+framework module CYTabBar {
+  umbrella header "CYTabBar-umbrella.h"
+
+  export *
+  module * { export * }
+}
