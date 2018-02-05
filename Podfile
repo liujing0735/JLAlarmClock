@@ -21,6 +21,7 @@ def common_pods
     #pod 'SDWebImage', '~>3.8'
     #pod 'SlideMenuControllerSwift'
     pod 'IQKeyboardManagerSwift'
+    pod 'PGDatePicker', '>= 2.0.6'
 end
 
 target 'JLAlarmClock' do

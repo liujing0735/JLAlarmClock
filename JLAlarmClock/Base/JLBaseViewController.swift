@@ -78,7 +78,7 @@ class JLBaseViewController: UIViewController,JLBaseDelegate {
     }
     
     /// 返回父视图控制器
-    private func backParentViewController() {
+    func backParentViewController() {
         let controllers: [UIViewController]! = self.navigationController?.childViewControllers
         if controllers.count > 0 {
             self.navigationController?.popViewController(animated: true)
