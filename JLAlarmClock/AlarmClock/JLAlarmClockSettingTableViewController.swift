@@ -64,6 +64,14 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
     }
     
     override func rightItemClick(sender: Any) {
+        let sqlMgr = JLSQLiteManager.shared
+        if sqlMgr.open() {
+            let column: [String: JLSQLiteDataType] = ["alarm_clock_id": .Integer, "alarm_clock_name": .Text, "alarm_clock_time": .Real, "alarm_clock_start_date": .Real, "alarm_clock_cycle_number": .Integer, "alarm_clock_cycle_unit": .Integer]
+            let constraint: [String: [JLSQLiteConstraint]] = ["alarm_clock_id": [.AutoPrimaryKey]]
+            sqlMgr.createTable(tbName: "alarm_table", tbColumn: column, tbConstraint: constraint) { (error) in
+                
+            }
+        }
         
     }
     

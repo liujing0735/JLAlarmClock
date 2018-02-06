@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JLAlarmClock/Base/JLBaseViewController.swift"
-            timestampString = "539515827.22479"
+            timestampString = "539602585.0646"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JLAlarmClock/Base/JLBaseViewController.swift"
-            timestampString = "539515827.2249171"
+            timestampString = "539602585.064692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JLAlarmClock/AlarmClock/JLAlarmClockSettingTableViewController.swift"
-            timestampString = "539515827.225009"
+            timestampString = "539602585.064769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JLAlarmClock/AlarmClock/JLAlarmClockSettingTableViewController.swift"
-            timestampString = "539515827.226163"
+            timestampString = "539602585.065596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "weekdayName(weekday:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,13 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JLAlarmClock/AlarmClock/JLAlarmClockRepeatTableViewController.swift"
-            timestampString = "539515827.22717"
+            timestampString = "539602585.066162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
             endingLineNumber = "58"
-            landmarkName = "weekdaySelect"
-            landmarkType = "24">
+            landmarkName = "rightItemClick(sender:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JLAlarmClock/AlarmClock/JLAlarmClockSettingTableViewController.swift"
-            timestampString = "539515827.2274539"
+            timestampString = "539602585.066263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "didSelectRepeat(repeatUnit:weekdaySelect:)"
             landmarkType = "7">
          </BreakpointContent>
