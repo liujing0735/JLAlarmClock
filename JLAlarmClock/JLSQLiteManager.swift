@@ -11,7 +11,74 @@ import SQLite3
 
 struct JLSQLiteError {
     var code: Int32
-    var errmsg: String
+    var errmsg: String {
+        get {
+            switch code {
+            case SQLITE_ERROR:
+                return "SQL数据库错误或者丢失"
+            case SQLITE_INTERNAL:
+                return "SQL内部逻辑错误 "
+            case SQLITE_PERM:
+                return "没有访问权限 "
+            case SQLITE_ABORT:
+                return "回调请求终止 "
+            case SQLITE_BUSY:
+                return "数据库文件被锁定 "
+            case SQLITE_LOCKED:
+                return "数据库中有表被锁定 "
+            case SQLITE_NOMEM:
+                return "分配空间失败 "
+            case SQLITE_READONLY:
+                return "企图向只读属性的数据库中做写操作 "
+            case SQLITE_INTERRUPT:
+                return "通过sqlite3_interrupt()方法终止操作"
+            case SQLITE_IOERR:
+                return "磁盘发生错误 "
+            case SQLITE_CORRUPT:
+                return "数据库磁盘格式不正确 "
+            case SQLITE_NOTFOUND:
+                return "调用位置操作码 "
+            case SQLITE_FULL:
+                return "由于数据库已满造成的添加数据失败 "
+            case SQLITE_CANTOPEN:
+                return "无法打开数据库文件 "
+            case SQLITE_PROTOCOL:
+                return "数据库锁协议错误 "
+            case SQLITE_EMPTY:
+                return "数据库为空 "
+            case SQLITE_SCHEMA:
+                return "数据库模式更改 "
+            case SQLITE_TOOBIG:
+                return "字符或者二进制数据超出长度 "
+            case SQLITE_CONSTRAINT:
+                return "违反协议终止 "
+            case SQLITE_MISMATCH:
+                return "数据类型不匹配 "
+            case SQLITE_MISUSE:
+                return "库使用不当 "
+            case SQLITE_NOLFS:
+                return "使用不支持的操作系统 "
+            case SQLITE_AUTH:
+                return "授权拒绝 "
+            case SQLITE_FORMAT:
+                return "辅助数据库格式错误 "
+            case SQLITE_RANGE:
+                return "sqlite3_bind 第二个参数超出范围 "
+            case SQLITE_NOTADB:
+                return "打开不是数据库的文件 "
+            case SQLITE_NOTICE:
+                return "来自sqlite3_log()的通知 "
+            case SQLITE_WARNING:
+                return "来自sqlite3_log() 的警告"
+            case SQLITE_ROW:
+                return "sqlite3_step() 方法准备好了一行数据 "
+            case SQLITE_DONE:
+                return "sqlite3_step() 已完成执行"
+            default:
+                return ""
+            }
+        }
+    }
 }
 
 enum JLSQLiteOrder: String {
@@ -89,6 +156,7 @@ class JLSQLiteManager: NSObject {
     
     func open(path: String) -> Bool {
         if sqlite3_open(path.cString(using: String.Encoding.utf8), &dbBase) != SQLITE_OK {
+            log("sqlite3 open failure")
             return false
         }
         return true
@@ -105,10 +173,12 @@ class JLSQLiteManager: NSObject {
         var columnString = ""
         // 遍历列名称及其数据类型
         for (column, type) in tbColumn {
-            columnString.append("\(column) \(type)")
+            columnString.append("\(column) \(type.rawValue)")
             // 遍历列约束
-            for constraint in tbConstraint[column]! {
-                columnString.append(" \(constraint)")
+            if tbConstraint.keys.contains(column) {
+                for constraint in tbConstraint[column]! {
+                    columnString.append(" \(constraint.rawValue)")
+                }
             }
             columnString.append(",")
         }
@@ -123,7 +193,7 @@ class JLSQLiteManager: NSObject {
                 }
             }
         }
-        let sql = "create table \(tbName)(\(columnString)"
+        let sql = "create table \(tbName)(\(columnString))"
         execSQL(sql: sql) { (error) in
             block(error)
         }
@@ -145,7 +215,7 @@ class JLSQLiteManager: NSObject {
         mutKey.remove(at: mutKey.index(before: mutKey.endIndex))
         mutValue.remove(at: mutValue.index(before: mutValue.endIndex))
         
-        let sql = "insert into \(tbName)(\(mutKey) values(\(mutValue))"
+        let sql = "insert into \(tbName)(\(mutKey)) values(\(mutValue))"
         execSQL(sql: sql) { (error) in
             block(error)
         }
@@ -160,7 +230,7 @@ class JLSQLiteManager: NSObject {
     func delete(tbName: String, rowWhere: String! = nil, block: ((JLSQLiteError?) ->())) {
         var sql = "delete from \(tbName)"
         if rowWhere != nil {
-            sql.append(" where \(rowWhere)")
+            sql.append(" where \(rowWhere.description)")
         }
         execSQL(sql: sql) { (error) in
             block(error)
@@ -183,7 +253,7 @@ class JLSQLiteManager: NSObject {
             sql.remove(at: sql.index(before: sql.endIndex))
         }
         if rowWhere != nil {
-            sql.append(" where \(rowWhere)")
+            sql.append(" where \(rowWhere.description)")
         }
         execSQL(sql: sql) { (error) in
             block(error)
@@ -210,10 +280,10 @@ class JLSQLiteManager: NSObject {
             sql = "select \(columnString) from \(tbName)"
         }
         if rowWhere != nil {
-            sql.append(" where \(rowWhere)")
+            sql.append(" where \(rowWhere.description)")
         }
         if orderBy != nil {
-            sql.append(" order by \(orderBy) \(oreder)")
+            sql.append(" order by \(orderBy.description) \(oreder.rawValue)")
         }
         selectSQL(sql: sql) { (dicts, error) in
             block(dicts, error)
@@ -226,10 +296,10 @@ class JLSQLiteManager: NSObject {
     ///   - sql: sql语句
     ///   - block: 执行结果回调
     func execSQL(sql: String, block: ((JLSQLiteError?) ->())) {
-        let errmsg: UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>? = nil
-        let code = sqlite3_exec(dbBase, sql.cString(using: String.Encoding.utf8), nil, nil, errmsg)
+        let code = sqlite3_exec(dbBase, sql.cString(using: String.Encoding.utf8), nil, nil, nil)
         if code != SQLITE_OK {
-            block(JLSQLiteError(code: code, errmsg: String(describing: errmsg)))
+            print(sql)
+            block(JLSQLiteError(code: code))
         }else {
             block(nil)
         }
@@ -246,7 +316,8 @@ class JLSQLiteManager: NSObject {
         var stmt: OpaquePointer? = nil
         let code = sqlite3_prepare_v2(dbBase, sql.cString(using: String.Encoding.utf8), -1, &stmt, nil)
         if code != SQLITE_OK {
-            block(dicts, JLSQLiteError(code: code, errmsg: "查询失败，请检查SQL语句"))
+            print(sql)
+            block(dicts, JLSQLiteError(code: code))
         }else {
             while sqlite3_step(stmt) == SQLITE_ROW {
                 let count = sqlite3_column_count(stmt)

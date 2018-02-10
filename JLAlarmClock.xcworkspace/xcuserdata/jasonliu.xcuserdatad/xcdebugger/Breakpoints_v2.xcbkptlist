@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JLAlarmClock/Base/JLBaseViewController.swift"
-            timestampString = "539602585.0646"
+            timestampString = "539861488.506129"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JLAlarmClock/Base/JLBaseViewController.swift"
-            timestampString = "539602585.064692"
+            timestampString = "539861488.506253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JLAlarmClock/AlarmClock/JLAlarmClockSettingTableViewController.swift"
-            timestampString = "539602585.064769"
+            timestampString = "539861488.5063469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JLAlarmClock/AlarmClock/JLAlarmClockSettingTableViewController.swift"
-            timestampString = "539602585.065596"
+            timestampString = "539861488.5071239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "weekdayName(weekday:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JLAlarmClock/AlarmClock/JLAlarmClockRepeatTableViewController.swift"
-            timestampString = "539602585.066162"
+            timestampString = "539861488.507725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
@@ -90,12 +90,140 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JLAlarmClock/AlarmClock/JLAlarmClockSettingTableViewController.swift"
-            timestampString = "539602585.066263"
+            timestampString = "539861488.5078239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "didSelectRepeat(repeatUnit:weekdaySelect:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JLAlarmClock/JLSQLiteManager.swift"
+            timestampString = "539861488.508513"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "createTable(tbName:tbColumn:tbConstraint:block:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JLAlarmClock/JLSQLiteManager.swift"
+            timestampString = "539861488.508633"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "createTable(tbName:tbColumn:tbConstraint:block:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JLAlarmClock/JLSQLiteManager.swift"
+            timestampString = "539861488.508725"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "createTable(tbName:tbColumn:tbConstraint:block:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JLAlarmClock/JLSQLiteManager.swift"
+            timestampString = "539861488.50881"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "createTable(tbName:tbColumn:tbConstraint:block:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "JLAlarmClock.JLSQLiteManager.createTable(tbName: Swift.String, tbColumn: Swift.Dictionary&lt;Swift.String, JLAlarmClock.JLSQLiteDataType&gt;, tbConstraint: Swift.Dictionary&lt;Swift.String, Swift.Array&lt;JLAlarmClock.JLSQLiteConstraint&gt;&gt;, block: (Swift.Optional&lt;JLAlarmClock.JLSQLiteError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "JLAlarmClock"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jasonliu/Desktop/Work/JLAlarmClock/JLAlarmClock/JLSQLiteManager.swift"
+                  timestampString = "539774464.764285"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "5012">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;JLAlarmClock.JLSQLiteError&gt;) -&gt; () in JLAlarmClock.JLSQLiteManager.createTable(tbName: Swift.String, tbColumn: Swift.Dictionary&lt;Swift.String, JLAlarmClock.JLSQLiteDataType&gt;, tbConstraint: Swift.Dictionary&lt;Swift.String, Swift.Array&lt;JLAlarmClock.JLSQLiteConstraint&gt;&gt;, block: (Swift.Optional&lt;JLAlarmClock.JLSQLiteError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "JLAlarmClock"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jasonliu/Desktop/Work/JLAlarmClock/JLAlarmClock/JLSQLiteManager.swift"
+                  timestampString = "539774464.769196"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JLAlarmClock/JLSQLiteManager.swift"
+            timestampString = "539861488.508893"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "302"
+            endingLineNumber = "302"
+            landmarkName = "execSQL(sql:block:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JLAlarmClock/JLSQLiteManager.swift"
+            timestampString = "539861488.5089771"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
+            landmarkName = "execSQL(sql:block:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

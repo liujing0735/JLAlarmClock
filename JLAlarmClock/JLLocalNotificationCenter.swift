@@ -145,19 +145,6 @@ class JLLocalNotificationCenter: NSObject,UNUserNotificationCenterDelegate {
         }
     }
     
-    func addLocalNotification(weekday: JLWeekday,
-                              fireTime: Date,
-                              identifier: String,
-                              alertTitle: String!,
-                              alertBody: String!,
-                              alertAction: String!,
-                              alertLaunchImage: String!,
-                              soundName: String!,
-                              userInfo: [AnyHashable : Any]!,
-                              isRepeat: Bool) -> Void {
-        
-    }
-    
     /// 添加本地通知
     ///
     /// - Parameters:
@@ -278,8 +265,6 @@ class JLLocalNotificationCenter: NSObject,UNUserNotificationCenterDelegate {
             UIApplication.shared.cancelAllLocalNotifications()
         }
     }
-    
-    
     
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

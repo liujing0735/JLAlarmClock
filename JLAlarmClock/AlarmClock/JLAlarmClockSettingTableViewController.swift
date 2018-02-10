@@ -70,7 +70,36 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
             let constraint: [String: [JLSQLiteConstraint]] = ["alarm_clock_id": [.AutoPrimaryKey]]
             sqlMgr.createTable(tbName: "alarm_table", tbColumn: column, tbConstraint: constraint) { (error) in
                 
+                if error != nil {
+                    log((error?.errmsg)!)
+                }
             }
+            let data: [String: Any] = ["alarm_clock_name": "起床闹钟", "alarm_clock_time": "17:00:00", "alarm_clock_start_date": "2018-02-09", "alarm_clock_cycle_number": 1, "alarm_clock_cycle_unit": 1]
+            sqlMgr.insert(tbName: "alarm_table", data: data, block: { (error) in
+                
+                if error != nil {
+                    log((error?.errmsg)!)
+                }
+            })
+            sqlMgr.select(tbName: "alarm_table", block: { (dicts, error) in
+                if error != nil {
+                    log((error?.errmsg)!)
+                }else {
+                    log(dicts!)
+                }
+            })
+            sqlMgr.delete(tbName: "alarm_table", rowWhere: "alarm_clock_id == 10", block: { (error) in
+                
+                if error != nil {
+                    log((error?.errmsg)!)
+                }
+            })
+            sqlMgr.update(tbName: "alarm_table", data: ["alarm_clock_name": "新的起床闹铃"], block: { (error) in
+                
+                if error != nil {
+                    log((error?.errmsg)!)
+                }
+            })
         }
         
     }

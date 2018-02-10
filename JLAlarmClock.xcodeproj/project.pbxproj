@@ -24,6 +24,7 @@
 		22C8C15320282DEB004439AA /* JLAlarmClockRepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C8C15220282DEB004439AA /* JLAlarmClockRepeatTableViewController.swift */; };
 		22C8C15520293218004439AA /* JLSQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C8C15420293218004439AA /* JLSQLiteManager.swift */; };
 		22C8C15720294D5E004439AA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C8C15620294D5E004439AA /* libsqlite3.tbd */; };
+		22C8C159202C4896004439AA /* JLAlarmClockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C8C158202C4896004439AA /* JLAlarmClockManager.swift */; };
 		CBD7D3AFC3214DB814DBD0C1 /* Pods_JLAlarmClock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CB23FA1D7DE612B6E96CA9 /* Pods_JLAlarmClock.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		22C8C15220282DEB004439AA /* JLAlarmClockRepeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockRepeatTableViewController.swift; sourceTree = "<group>"; };
 		22C8C15420293218004439AA /* JLSQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLSQLiteManager.swift; sourceTree = "<group>"; };
 		22C8C15620294D5E004439AA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		22C8C158202C4896004439AA /* JLAlarmClockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockManager.swift; sourceTree = "<group>"; };
 		38CB23FA1D7DE612B6E96CA9 /* Pods_JLAlarmClock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JLAlarmClock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4835C135DC0FB60060F0B5EF /* Pods-JLAlarmClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLAlarmClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JLAlarmClock/Pods-JLAlarmClock.debug.xcconfig"; sourceTree = "<group>"; };
 		CE764E10CECF6EF14E2E3EA7 /* Pods-JLAlarmClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JLAlarmClock.release.xcconfig"; path = "Pods/Target Support Files/Pods-JLAlarmClock/Pods-JLAlarmClock.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +139,8 @@
 			children = (
 				228024252025615300AF9CD8 /* Base */,
 				22BBAA991F42EA8F00242E50 /* JLExtensionSwift.swift */,
+				22C8C15420293218004439AA /* JLSQLiteManager.swift */,
+				22C8C158202C4896004439AA /* JLAlarmClockManager.swift */,
 				220DAD151F33029E0005867C /* JLLocalNotificationCenter.swift */,
 				2270E8DC1F301CD200979959 /* AppDelegate.swift */,
 				22BBAA8B1F42967C00242E50 /* AlarmClock */,
@@ -145,7 +149,6 @@
 				2270E8E71F301CD200979959 /* LaunchScreen.storyboard */,
 				2270E8EA1F301CD300979959 /* Info.plist */,
 				22BBAA951F42E0BA00242E50 /* JLAlarmClock-Bridging-Header.h */,
-				22C8C15420293218004439AA /* JLSQLiteManager.swift */,
 			);
 			path = JLAlarmClock;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				22BBAA911F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift in Sources */,
 				228024272025617E00AF9CD8 /* JLBaseViewController.swift in Sources */,
 				22C8C15520293218004439AA /* JLSQLiteManager.swift in Sources */,
+				22C8C159202C4896004439AA /* JLAlarmClockManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
