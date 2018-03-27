@@ -15,12 +15,19 @@ enum AlarmClock {
 
 class JLAlarmClockTableViewCell: UITableViewCell {
     
-    let timeLabel = UILabel()
-    let titleLabel = UILabel()
-    let detailLabel = UILabel()
-    let alarmClockSwitch = UISwitch()
-    let singleLine = UIView()
+    private let timeLabel = UILabel()
+    private let titleLabel = UILabel()
+    private let detailLabel = UILabel()
+    private let alarmClockSwitch = UISwitch()
+    private let singleLine = UIView()
     
+    func reloadData(dict: Dictionary<String, Any>) {
+        let timeString = dict["alarm_clock_time"] as! String
+        let times = timeString.components(separatedBy: ":")
+        timeLabel.text = "\(times[0]):\(times[1])"
+        titleLabel.text = dict["alarm_clock_name"] as? String
+        detailLabel.text = dict["alarm_clock_start_date"] as? String
+    }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
@@ -43,7 +50,7 @@ class JLAlarmClockTableViewCell: UITableViewCell {
         alarmClockSwitch.frame = CGRect(x: UIScreen.main.bounds.width-51-10, y: (60-31)/2, width: 51, height: 31)
         self.addSubview(alarmClockSwitch)
         
-        singleLine.frame = CGRect(x: 0, y: 60-0.5, width: UIScreen.main.bounds.width, height: 0.5)
+        singleLine.frame = CGRect(x: 0, y: 60-0.2, width: UIScreen.main.bounds.width, height: 0.2)
         singleLine.backgroundColor = UIColor.lightGray
         self.addSubview(singleLine)
     }

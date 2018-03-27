@@ -10,7 +10,7 @@ import UIKit
 import PGDatePicker
 
 class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePickerDelegate,JLRepeatDelegate {
-
+    
     var time: String!
     var date: String!
     var week: String!
@@ -66,7 +66,12 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
     override func rightItemClick(sender: Any) {
         let sqlMgr = JLSQLiteManager.shared
         if sqlMgr.open() {
-            let column: [String: JLSQLiteDataType] = ["alarm_clock_id": .Integer, "alarm_clock_name": .Text, "alarm_clock_time": .Real, "alarm_clock_start_date": .Real, "alarm_clock_cycle_number": .Integer, "alarm_clock_cycle_unit": .Integer]
+            let column: [String: JLSQLiteDataType] = ["alarm_clock_id": .Integer, "alarm_clock_name": .Text,
+                "alarm_clock_time": .Real,
+                "alarm_clock_start_date": .Real,
+                "alarm_clock_repeats_number": .Integer,
+                "alarm_clock_repeats_unit": .Integer,
+                "alarm_clock_state": .Integer]
             let constraint: [String: [JLSQLiteConstraint]] = ["alarm_clock_id": [.AutoPrimaryKey]]
             sqlMgr.createTable(tbName: "alarm_table", tbColumn: column, tbConstraint: constraint) { (error) in
                 
@@ -74,13 +79,19 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
                     log((error?.errmsg)!)
                 }
             }
-            let data: [String: Any] = ["alarm_clock_name": "起床闹钟", "alarm_clock_time": "17:00:00", "alarm_clock_start_date": "2018-02-09", "alarm_clock_cycle_number": 1, "alarm_clock_cycle_unit": 1]
+            
+            let data: [String: Any] = ["alarm_clock_name": "起床闹钟", "alarm_clock_time": "\(String(describing: dateComponents.hour)):\(String(describing: dateComponents.minute)):\(String(describing: dateComponents.second))",
+                "alarm_clock_start_date": "\(String(describing: dateComponents.year)):\(String(describing: dateComponents.month)):\(String(describing: dateComponents.day))",
+                "alarm_clock_repeats_number": 1,
+                "alarm_clock_repeats_unit": repeatUnit.hashValue,
+                "alarm_clock_state": 1]
             sqlMgr.insert(tbName: "alarm_table", data: data, block: { (error) in
                 
                 if error != nil {
                     log((error?.errmsg)!)
                 }
             })
+            /*
             sqlMgr.select(tbName: "alarm_table", block: { (dicts, error) in
                 if error != nil {
                     log((error?.errmsg)!)
@@ -100,8 +111,10 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
                     log((error?.errmsg)!)
                 }
             })
+            */
+            sqlMgr.close()
         }
-        
+        backParentViewController()
     }
     
     override func viewDidLoad() {

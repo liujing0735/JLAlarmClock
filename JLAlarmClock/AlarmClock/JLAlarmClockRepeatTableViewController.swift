@@ -8,16 +8,27 @@
 
 import UIKit
 
+/// 结构体
 struct JLWeekdaySelect {
-    var isSun: Bool
-    var isMon: Bool
-    var isTue: Bool
-    var isWed: Bool
-    var isThu: Bool
-    var isFri: Bool
-    var isSat: Bool
+    var isSun: Bool = false
+    var isMon: Bool = false
+    var isTue: Bool = false
+    var isWed: Bool = false
+    var isThu: Bool = false
+    var isFri: Bool = false
+    var isSat: Bool = false
+    func string() -> String {
+        return "\((isSun ? "1" : "0"))\((isMon ? "1" : "0"))\((isTue ? "1" : "0"))\((isWed ? "1" : "0"))\((isThu ? "1" : "0"))\((isFri ? "1" : "0"))\((isSat ? "1" : "0"))"
+    }
 }
 
+/// 枚举
+///
+/// - None: 未选择
+/// - EveryYear: 每年
+/// - EveryMonth: 每月
+/// - EveryWeek: 每周
+/// - EveryDay: 每天
 enum JLRepeatUnit {
     case None
     case EveryYear
@@ -42,7 +53,7 @@ class JLAlarmClockRepeatTableViewController: JLBaseTableViewController {
             return _weekdaySelect
         }
     }
-    private var _weekdaySelect: JLWeekdaySelect = JLWeekdaySelect(isSun: false, isMon: false, isTue: false, isWed: false, isThu: false, isFri: false, isSat: false)
+    private var _weekdaySelect: JLWeekdaySelect = JLWeekdaySelect()
     var repeatUnit: JLRepeatUnit {
         set {
             _repeatUnit = newValue
@@ -52,7 +63,7 @@ class JLAlarmClockRepeatTableViewController: JLBaseTableViewController {
         }
     }
     private var _repeatUnit: JLRepeatUnit = .None
-    private let rowDatas: [[String]] = [["每天"],["每周一","每周二","每周三","每周四","每周五","每周六","每周天"],["每月"],["每年"]]
+    private let rowDatas: [[String]] = [["只响一次"],["每天"],["每周一","每周二","每周三","每周四","每周五","每周六","每周天"],["每月"],["每年"]]
 
     override func rightItemClick(sender: Any) {
         if self.delegate != nil {
@@ -105,13 +116,20 @@ class JLAlarmClockRepeatTableViewController: JLBaseTableViewController {
         
         switch indexPath.section {
         case 0:
-            if repeatUnit == .EveryDay {
+            if repeatUnit == .None {
                 cell.accessoryType = .checkmark
             }else {
                 cell.accessoryType = .none
             }
             break
         case 1:
+            if repeatUnit == .EveryDay {
+                cell.accessoryType = .checkmark
+            }else {
+                cell.accessoryType = .none
+            }
+            break
+        case 2:
             if repeatUnit == .EveryDay {
                 cell.accessoryType = .checkmark
             }else if repeatUnit == .EveryWeek {
@@ -172,14 +190,14 @@ class JLAlarmClockRepeatTableViewController: JLBaseTableViewController {
                 cell.accessoryType = .none
             }
             break
-        case 2:
+        case 3:
             if repeatUnit == .EveryMonth {
                 cell.accessoryType = .checkmark
             }else {
                 cell.accessoryType = .none
             }
             break
-        case 3:
+        case 4:
             if repeatUnit == .EveryYear {
                 cell.accessoryType = .checkmark
             }else {
@@ -199,6 +217,16 @@ class JLAlarmClockRepeatTableViewController: JLBaseTableViewController {
 
         switch indexPath.section {
         case 0:
+            repeatUnit = .None
+            weekdaySelect.isSun = false
+            weekdaySelect.isMon = false
+            weekdaySelect.isTue = false
+            weekdaySelect.isWed = false
+            weekdaySelect.isThu = false
+            weekdaySelect.isFri = false
+            weekdaySelect.isSat = false
+            break
+        case 1:
             if select {
                 repeatUnit = .EveryDay
                 weekdaySelect.isSun = true
@@ -219,7 +247,7 @@ class JLAlarmClockRepeatTableViewController: JLBaseTableViewController {
                 weekdaySelect.isSat = false
             }
             break
-        case 1:
+        case 2:
             if select {
                 repeatUnit = .EveryWeek
                 switch indexPath.row {
@@ -282,7 +310,7 @@ class JLAlarmClockRepeatTableViewController: JLBaseTableViewController {
                 }
             }
             break
-        case 2:
+        case 3:
             if select {
                 repeatUnit = .EveryMonth
                 weekdaySelect.isSun = false
@@ -296,7 +324,7 @@ class JLAlarmClockRepeatTableViewController: JLBaseTableViewController {
                 repeatUnit = .None
             }
             break
-        case 3:
+        case 4:
             if select {
                 repeatUnit = .EveryYear
                 weekdaySelect.isSun = false

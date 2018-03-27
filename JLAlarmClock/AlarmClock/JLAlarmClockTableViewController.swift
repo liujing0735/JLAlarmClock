@@ -10,6 +10,8 @@ import UIKit
 
 class JLAlarmClockTableViewController: JLBaseTableViewController {
     
+    var alarmClocks: [Dictionary<String, Any>] = []
+    
     override func leftItemClick(sender: Any) {
         
     }
@@ -27,6 +29,25 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
 
         self.tableView.separatorStyle = .none
         self.tableView.register(JLAlarmClockTableViewCell.classForCoder(), forCellReuseIdentifier: "reuseIdentifier")
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let sqlMgr = JLSQLiteManager.shared
+        if sqlMgr.open() {
+            sqlMgr.select(tbName: "alarm_table", block: { (dicts, error) in
+                if error != nil {
+                    log((error?.errmsg)!)
+                }else {
+                    alarmClocks = dicts!
+                    self.tableView.reloadData()
+                }
+            })
+            sqlMgr.close()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +63,7 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return alarmClocks.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -53,9 +74,8 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! JLAlarmClockTableViewCell
 
         // Configure the cell...
-        cell.timeLabel.text = "07:10"
-        cell.titleLabel.text = "下午开会"
-        cell.detailLabel.text = "2017-08-10 星期四"
+        let dict = alarmClocks[indexPath.row]
+        cell.reloadData(dict: dict)
 
         return cell
     }

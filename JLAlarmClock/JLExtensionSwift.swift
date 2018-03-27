@@ -36,8 +36,8 @@ func screenHeight() -> CGFloat {
     return UIScreen.main.bounds.size.height
 }
 
-func log(_ items: Any..., separator: String = " ", terminator: String = "\n") {
-    print("\n在文件:\(String(#file.components(separatedBy: "/").last!))第\(#line)行: \(items)", separator, terminator)
+func log(_ items: Any..., separator: String = " ", terminator: String = "\n", line: Int = #line, file: String = #file, functoin: String = #function) {
+    print("\n在源文件\(String(file.components(separatedBy: "/").last!)) 第\(line)行 \(functoin)函数中: \(items)", separator, terminator)
 }
 
 class JLExtensionSwift: NSObject {
