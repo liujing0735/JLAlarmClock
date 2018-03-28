@@ -18,16 +18,17 @@ class JLCalendarTableViewController: JLBaseTableViewController {
 
         self.title = "日历"
         calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: 300))
-        
-        let center = JLLocalNotificationCenter()
-        center.registerLocalNotification()
+        /*
+        let localNotMgr = JLLocalNotificationManager.shared
+        localNotMgr.registerLocalNotification()
         
         let dateString = "20180202194230"
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMddHHmmss"
         let date = formatter.date(from: dateString)
         
-        center.addLocalNotification(fireDate: date!, identifier: "identifier", alertTitle: "alertTitle", alertBody: "alertBody", alertAction: nil, alertLaunchImage: nil, soundName: nil, userInfo: nil, repeatInterval: .Hour)
+        localNotMgr.addLocalNotification(fireDate: date!, identifier: "identifier", alertTitle: "alertTitle", alertBody: "alertBody", alertAction: nil, alertLaunchImage: nil, soundName: nil, userInfo: nil, repeatInterval: .Hour)
+        */
         
         self.tableView.delegate = self
         self.tableView.dataSource = self

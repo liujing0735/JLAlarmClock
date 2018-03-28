@@ -169,7 +169,14 @@ class JLSQLiteManager: NSObject {
         }
     }
     
-    func createTable(tbName: String, tbColumn: [String: JLSQLiteDataType], tbConstraint: [String: [JLSQLiteConstraint]], block: ((JLSQLiteError?) ->())) {
+    /// 创建表
+    ///
+    /// - Parameters:
+    ///   - tbName: 表名
+    ///   - tbColumn: 表列（表属性）
+    ///   - tbConstraint: 表约束,["id":[.AutoPrimaryKey],"column1,column2":[.PrimaryKey],"table1,column1":[.ForeignKey],]
+    ///   - block: 执行结果回调
+    func createTable(tbName: String, tbColumn: [String: JLSQLiteDataType], tbConstraint: [String: [JLSQLiteConstraint]] = [:], block: ((JLSQLiteError?) ->())) {
         var columnString = ""
         // 遍历列名称及其数据类型
         for (column, type) in tbColumn {
@@ -177,18 +184,24 @@ class JLSQLiteManager: NSObject {
             // 遍历列约束
             if tbConstraint.keys.contains(column) {
                 for constraint in tbConstraint[column]! {
-                    columnString.append(" \(constraint.rawValue)")
+                    if constraint != .ForeignKey {// 外键需要最后处理
+                        columnString.append(" \(constraint.rawValue)")
+                    }
                 }
             }
             columnString.append(",")
         }
         columnString.remove(at: columnString.index(before: columnString.endIndex))
-        // 复合主键、联合主键
+        // 复合主键、联合主键; 外键
         for (column, constraints) in tbConstraint {
-            if column.components(separatedBy: ",").count > 1 {
+            let columns = column.components(separatedBy: ",")
+            if columns.count > 1 {
                 for constraint in constraints {
                     if constraint == .PrimaryKey {
-                        columnString.append(", \(constraint)(\(column))")
+                        columnString.append(", \(constraint.rawValue)(\(column))")
+                    }
+                    if constraint == .ForeignKey {
+                        columnString.append(", \(constraint.rawValue)(\(columns[1])) references \(columns[0])(\(columns[1]))")
                     }
                 }
             }
@@ -269,7 +282,7 @@ class JLSQLiteManager: NSObject {
     ///   - orderBy: 排序列，可以多个: column1,column2
     ///   - oreder: 排序方式，升降序
     ///   - block: 执行结果回调
-    func select(tbName: String, tbColumns: [String]! = nil, rowWhere: String! = nil, orderBy: String! = nil, oreder: JLSQLiteOrder = .Asc, block: (([[String: Any]]?, JLSQLiteError?) ->())) {
+    func select(tbName: String, tbColumns: [String]! = nil, rowWhere: String! = nil, orderBy: String! = nil, oreder: JLSQLiteOrder = .Asc, block: (([[String: Any]], JLSQLiteError?) ->())) {
         var sql = "select * from \(tbName)"
         if tbColumns != nil {
             var columnString = ""
@@ -310,7 +323,7 @@ class JLSQLiteManager: NSObject {
     /// - Parameters:
     ///   - sql: sql语句
     ///   - block: 执行结果回调
-    func selectSQL(sql: String, block: (([[String: Any]]?, JLSQLiteError?) ->())) {
+    func selectSQL(sql: String, block: (([[String: Any]], JLSQLiteError?) ->())) {
         
         var dicts = [[String: Any]]()
         var stmt: OpaquePointer? = nil

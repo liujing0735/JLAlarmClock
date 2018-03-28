@@ -18,6 +18,28 @@ class JLAlarmClockManager: NSObject {
         super.init()
     }
     
+    func addAlarmClockOnlyRangOnce(data: Dictionary<String, Any>) {
+        let localNotMgr = JLLocalNotificationManager.shared
+        localNotMgr.registerLocalNotification()
+        //localNotMgr.addLocalNotification(fireDate: <#T##Date#>, identifier: <#T##String#>, alertTitle: , repeatInterval: .None)
+    }
+    
+    func addAlarmClockEveryDay(data: Dictionary<String, Any>) {
+        
+    }
+    
+    func addAlarmClockEveryWeek(data: Dictionary<String, Any>) {
+        
+    }
+    
+    func addAlarmClockEveryMonth(data: Dictionary<String, Any>) {
+        
+    }
+    
+    func addAlarmClockEveryYear(data: Dictionary<String, Any>) {
+        
+    }
+    
     /// 连续的7天日期
     ///
     /// - Returns: 从今天起连续的7天的日期

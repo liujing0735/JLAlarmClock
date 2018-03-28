@@ -4,3 +4,5 @@
 
 //#import <FSCalendar/FSCalendar.h>
 //#import <PGDatePicker/PGDatePickManager.h>
+
+#import <CommonCrypto/CommonDigest.h>

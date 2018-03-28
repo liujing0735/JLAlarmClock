@@ -11,20 +11,13 @@ import PGDatePicker
 
 class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePickerDelegate,JLRepeatDelegate {
     
-    var time: String!
-    var date: String!
-    var week: String!
-    var alertTitle: String!
-    var alertBody: String!
-    var alertAction: String!
-    var alertLaunchImage: String!
-    var soundName: String!
+    var dataSource: Dictionary<String, Any>!
     
     var datePicker: PGDatePicker = PGDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: 260))
     var datePickerManager: PGDatePickManager!
     var dateComponents: DateComponents = Calendar.current.dateComponents([.year,.month,.weekday,.weekdayOrdinal,.day,.hour,.minute,.second], from: Date())
-    var weekdaySelect: JLWeekdaySelect!
-    var repeatUnit: JLRepeatUnit!
+    var weekdaySelect: JLWeekdaySelect = JLWeekdaySelect()
+    var repeatUnit: JLRepeatUnit = .None
     var rowTitles: [String] = ["","闹钟标题","开始日期","响铃周期","铃声选择","更多设置"]
     var rowValue: [String:String] = [:]
     
@@ -47,65 +40,64 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
         let calendar = Calendar.current
         let date = calendar.date(from: dateComponents)
         datePicker.setDate(date)
-        
+    }
+    
+    private func showDatePickManager() {
+        if datePickerManager == nil {
+            setupDatePickManager()
+        }
         self.present(datePickerManager, animated: false, completion: nil)
     }
     
     private func gotoAlarmClockRepeat() {
         let controller = JLAlarmClockRepeatTableViewController()
         controller.delegate = self
-        if weekdaySelect != nil {
-            controller.weekdaySelect = weekdaySelect
-        }
-        if repeatUnit != nil {
-            controller.repeatUnit = repeatUnit
-        }
+        controller.weekdaySelect = weekdaySelect
+        controller.repeatUnit = repeatUnit
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     override func rightItemClick(sender: Any) {
         let sqlMgr = JLSQLiteManager.shared
         if sqlMgr.open() {
-            let column: [String: JLSQLiteDataType] = ["alarm_clock_id": .Integer, "alarm_clock_name": .Text,
-                "alarm_clock_time": .Real,
-                "alarm_clock_start_date": .Real,
-                "alarm_clock_repeats_number": .Integer,
-                "alarm_clock_repeats_unit": .Integer,
-                "alarm_clock_state": .Integer]
-            let constraint: [String: [JLSQLiteConstraint]] = ["alarm_clock_id": [.AutoPrimaryKey]]
-            sqlMgr.createTable(tbName: "alarm_table", tbColumn: column, tbConstraint: constraint) { (error) in
-                
-                if error != nil {
-                    log((error?.errmsg)!)
-                }
-            }
-            
-            let data: [String: Any] = ["alarm_clock_name": "起床闹钟", "alarm_clock_time": "\(String(describing: dateComponents.hour)):\(String(describing: dateComponents.minute)):\(String(describing: dateComponents.second))",
-                "alarm_clock_start_date": "\(String(describing: dateComponents.year)):\(String(describing: dateComponents.month)):\(String(describing: dateComponents.day))",
+            let time = String(format: "%02d", dateComponents.hour!)+":"+String(format: "%02d", dateComponents.minute!)+":"+String(format: "%02d", dateComponents.second!)
+            let date = String(format: "%04d", dateComponents.year!)+"-"+String(format: "%02d", dateComponents.month!)+"-"+String(format: "%02d", dateComponents.day!)
+            let data: [String: Any] = ["alarm_clock_name": "起床闹钟", "alarm_clock_time": time,
+                "alarm_clock_start_date": date,
                 "alarm_clock_repeats_number": 1,
-                "alarm_clock_repeats_unit": repeatUnit.hashValue,
-                "alarm_clock_state": 1]
-            sqlMgr.insert(tbName: "alarm_table", data: data, block: { (error) in
-                
-                if error != nil {
-                    log((error?.errmsg)!)
-                }
-            })
+                "alarm_clock_repeats_unit": repeatUnit.rawValue,
+                "alarm_clock_repeats_weekday": weekdaySelect.string,
+                "alarm_clock_state": 1,
+                "alarm_clock_user_id": 0,
+                "alarm_clock_delete_flag": 0]
+            if dataSource == nil {
+                sqlMgr.insert(tbName: "alarm_clock_info_table", data: data, block: { (error) in
+                    if error != nil {
+                        log((error?.errmsg)!)
+                    }
+                })
+            }else {
+                sqlMgr.update(tbName: "alarm_clock_info_table", data: data, rowWhere: "alarm_clock_id = "+String(dataSource["alarm_clock_id"] as! Int), block: { (error) in
+                    if error != nil {
+                        log((error?.errmsg)!)
+                    }
+                })
+            }
             /*
-            sqlMgr.select(tbName: "alarm_table", block: { (dicts, error) in
+            sqlMgr.select(tbName: "alarm_clock_info_table", block: { (dicts, error) in
                 if error != nil {
                     log((error?.errmsg)!)
                 }else {
                     log(dicts!)
                 }
             })
-            sqlMgr.delete(tbName: "alarm_table", rowWhere: "alarm_clock_id == 10", block: { (error) in
+            sqlMgr.delete(tbName: "alarm_clock_info_table", rowWhere: "alarm_clock_id == 10", block: { (error) in
                 
                 if error != nil {
                     log((error?.errmsg)!)
                 }
             })
-            sqlMgr.update(tbName: "alarm_table", data: ["alarm_clock_name": "新的起床闹铃"], block: { (error) in
+            sqlMgr.update(tbName: "alarm_clock_info_table", data: ["alarm_clock_name": "新的起床闹铃"], block: { (error) in
                 
                 if error != nil {
                     log((error?.errmsg)!)
@@ -121,15 +113,37 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "添加闹钟"
         addLeftItem(title: "返回")
         addRightItem(title: "存储")
         
         setupDatePicker()
+        setupDatePickManager()
         
-        rowValue["闹钟标题"] = "起床闹钟"
-        rowValue["开始日期"] = "\(dateComponents.year!)年\(dateComponents.month!)月\(dateComponents.day!)日"
-        rowValue["响铃周期"] = "只响一次"
+        if dataSource == nil {
+            self.title = "添加闹钟"
+            
+            rowValue["闹钟标题"] = "起床闹钟"
+            rowValue["开始日期"] = "\(dateComponents.year!)年\(dateComponents.month!)月\(dateComponents.day!)日"
+            rowValue["响铃周期"] = "只响一次"
+        }else {
+            self.title = "设置闹钟"
+            
+            rowValue["闹钟标题"] = (dataSource["alarm_clock_name"] as! String)
+            
+            let dateString = (dataSource["alarm_clock_start_date"] as! String)+" "+(dataSource["alarm_clock_time"] as! String)
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let date = formatter.date(from: dateString)
+            let calendar: Calendar = Calendar.current
+            let components: DateComponents = calendar.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date!)
+            datePicker.setDate(date)
+            datePickerManager.datePicker.setDate(date)
+            rowValue["开始日期"] = "\(components.year!)年\(components.month!)月\(components.day!)日"
+            
+            repeatUnit = JLRepeatUnit(rawValue: dataSource["alarm_clock_repeats_unit"] as! Int)!
+            weekdaySelect.string = (dataSource["alarm_clock_repeats_weekday"] as! String)
+            rowValue["响铃周期"] = repeatsName(repeatUnit: repeatUnit, weekdaySelect: weekdaySelect)
+        }
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -184,13 +198,54 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
         case "闹钟标题":
             break
         case "开始日期":
-            setupDatePickManager()
+            showDatePickManager()
             break
         case "响铃周期":
-            gotoAlarmClockRepeat();
+            gotoAlarmClockRepeat()
             break
         default:
             break
+        }
+    }
+    
+    private func repeatsName(repeatUnit: JLRepeatUnit, weekdaySelect: JLWeekdaySelect!) -> String {
+        switch repeatUnit {
+        case .None:
+            return "只响一次"
+        case .EveryDay:
+            return "每天"
+        case .EveryWeek:
+            if weekdaySelect.isSun == false && weekdaySelect.isMon == true && weekdaySelect.isTue == true && weekdaySelect.isWed == true && weekdaySelect.isThu == true && weekdaySelect.isFri == true && weekdaySelect.isSat == false {
+                return "每周 工作日"
+            }else {
+                var dateString = "每周"
+                if weekdaySelect.isMon {
+                    dateString += " 周一"
+                }
+                if weekdaySelect.isTue {
+                    dateString += " 周二"
+                }
+                if weekdaySelect.isWed {
+                    dateString += " 周三"
+                }
+                if weekdaySelect.isThu {
+                    dateString += " 周四"
+                }
+                if weekdaySelect.isFri {
+                    dateString += " 周五"
+                }
+                if weekdaySelect.isSat {
+                    dateString += " 周六"
+                }
+                if weekdaySelect.isSun {
+                    dateString += " 周天"
+                }
+                return dateString
+            }
+        case .EveryMonth:
+            return "每月"
+        case .EveryYear:
+            return "每年"
         }
     }
     
@@ -248,49 +303,8 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
         self.repeatUnit = repeatUnit
         self.weekdaySelect = weekdaySelect
         
-        switch repeatUnit {
-        case .None:
-            rowValue["响铃周期"] = "只响一次"
-            break
-        case .EveryDay:
-            rowValue["响铃周期"] = "每天"
-            break
-        case .EveryWeek:
-            if weekdaySelect.isSun == false && weekdaySelect.isMon == true && weekdaySelect.isTue == true && weekdaySelect.isWed == true && weekdaySelect.isThu == true && weekdaySelect.isFri == true && weekdaySelect.isSat == false {
-                rowValue["响铃周期"] = "每周 工作日"
-            }else {
-                var dateString = "每周"
-                if weekdaySelect.isMon {
-                    dateString += " 周一"
-                }
-                if weekdaySelect.isTue {
-                    dateString += " 周二"
-                }
-                if weekdaySelect.isWed {
-                    dateString += " 周三"
-                }
-                if weekdaySelect.isThu {
-                    dateString += " 周四"
-                }
-                if weekdaySelect.isFri {
-                    dateString += " 周五"
-                }
-                if weekdaySelect.isSat {
-                    dateString += " 周六"
-                }
-                if weekdaySelect.isSun {
-                    dateString += " 周天"
-                }
-                rowValue["响铃周期"] = dateString
-            }
-            break
-        case .EveryMonth:
-            rowValue["响铃周期"] = "每月"
-            break
-        case .EveryYear:
-            rowValue["响铃周期"] = "每年"
-            break
-        }
+        rowValue["响铃周期"] = repeatsName(repeatUnit: repeatUnit, weekdaySelect: weekdaySelect)
+        
         self.tableView.reloadData()
     }
     

@@ -38,11 +38,11 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
         
         let sqlMgr = JLSQLiteManager.shared
         if sqlMgr.open() {
-            sqlMgr.select(tbName: "alarm_table", block: { (dicts, error) in
+            sqlMgr.select(tbName: "alarm_clock_info_table", block: { (dicts, error) in
                 if error != nil {
                     log((error?.errmsg)!)
                 }else {
-                    alarmClocks = dicts!
+                    alarmClocks = dicts
                     self.tableView.reloadData()
                 }
             })
@@ -83,15 +83,26 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let setting = JLAlarmClockSettingTableViewController()
-        setting.alertTitle = "下午开会"
-        setting.time = "07:10"
-        setting.date = "2017-08-10"
-        setting.week = "星期四"
+        setting.dataSource = alarmClocks[indexPath.row]
         self.navigationController?.pushViewController(setting, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除闹钟"
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+        }
     }
 
     /*

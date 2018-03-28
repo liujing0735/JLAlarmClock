@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		220DAD161F33029E0005867C /* JLLocalNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220DAD151F33029E0005867C /* JLLocalNotificationCenter.swift */; };
+		220DAD161F33029E0005867C /* JLLocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220DAD151F33029E0005867C /* JLLocalNotificationManager.swift */; };
 		2270E8DD1F301CD200979959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8DC1F301CD200979959 /* AppDelegate.swift */; };
 		2270E8E61F301CD200979959 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2270E8E51F301CD200979959 /* Assets.xcassets */; };
 		2270E8E91F301CD300979959 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2270E8E71F301CD200979959 /* LaunchScreen.storyboard */; };
@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		220DAD151F33029E0005867C /* JLLocalNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLLocalNotificationCenter.swift; sourceTree = "<group>"; };
+		220DAD151F33029E0005867C /* JLLocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLLocalNotificationManager.swift; sourceTree = "<group>"; };
 		2270E8D91F301CD200979959 /* JLAlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLAlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2270E8DC1F301CD200979959 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2270E8E51F301CD200979959 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 				22BBAA991F42EA8F00242E50 /* JLExtensionSwift.swift */,
 				22C8C15420293218004439AA /* JLSQLiteManager.swift */,
 				22C8C158202C4896004439AA /* JLAlarmClockManager.swift */,
-				220DAD151F33029E0005867C /* JLLocalNotificationCenter.swift */,
+				220DAD151F33029E0005867C /* JLLocalNotificationManager.swift */,
 				2270E8DC1F301CD200979959 /* AppDelegate.swift */,
 				22BBAA8B1F42967C00242E50 /* AlarmClock */,
 				22BBAA8F1F42967C00242E50 /* Calendar */,
@@ -410,7 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22802429202561BD00AF9CD8 /* JLBaseTableViewController.swift in Sources */,
-				220DAD161F33029E0005867C /* JLLocalNotificationCenter.swift in Sources */,
+				220DAD161F33029E0005867C /* JLLocalNotificationManager.swift in Sources */,
 				2270E8DD1F301CD200979959 /* AppDelegate.swift in Sources */,
 				22BBAA921F42967C00242E50 /* JLAlarmClockTableViewCell.swift in Sources */,
 				22BBAA941F42967C00242E50 /* JLCalendarTableViewController.swift in Sources */,

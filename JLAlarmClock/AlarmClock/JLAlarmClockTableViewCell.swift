@@ -27,6 +27,7 @@ class JLAlarmClockTableViewCell: UITableViewCell {
         timeLabel.text = "\(times[0]):\(times[1])"
         titleLabel.text = dict["alarm_clock_name"] as? String
         detailLabel.text = dict["alarm_clock_start_date"] as? String
+        alarmClockSwitch.isOn = Bool(exactly: dict["alarm_clock_state"] as! NSNumber)!
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

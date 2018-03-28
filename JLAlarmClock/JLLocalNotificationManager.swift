@@ -1,5 +1,5 @@
 //
-//  JLLocalNotificationCenter.swift
+//  JLLocalNotificationManager.swift
 //  JLAlarmClock
 //
 //  Created by JasonLiu on 2017/8/3.
@@ -30,7 +30,15 @@ enum JLWeekday: Int {
     case Saturday
 }
 
-class JLLocalNotificationCenter: NSObject,UNUserNotificationCenterDelegate {
+class JLLocalNotificationManager: NSObject,UNUserNotificationCenterDelegate {
+    
+    static let shared: JLLocalNotificationManager = {
+        let sharedInstance = JLLocalNotificationManager.init()
+        return sharedInstance
+    }()
+    private override init() {
+        super.init()
+    }
     
     @available(iOS 10.0, *)
     private func repeatForIOS10(fireDate: Date, repeatInterval: JLRepeatInterval) -> UNNotificationTrigger {
@@ -159,12 +167,12 @@ class JLLocalNotificationCenter: NSObject,UNUserNotificationCenterDelegate {
     ///   - repeatInterval: 循环周期
     func addLocalNotification(fireDate: Date,
                               identifier: String,
-                              alertTitle: String!,
-                              alertBody: String!,
-                              alertAction: String!,
-                              alertLaunchImage: String!,
-                              soundName: String!,
-                              userInfo: [AnyHashable : Any]!,
+                              alertTitle: String! = nil,
+                              alertBody: String! = nil,
+                              alertAction: String! = nil,
+                              alertLaunchImage: String! = nil,
+                              soundName: String! = nil,
+                              userInfo: [AnyHashable : Any]! = nil,
                               repeatInterval: JLRepeatInterval) -> Void {
         
         if #available(iOS 10.0, *) {
@@ -191,6 +199,7 @@ class JLLocalNotificationCenter: NSObject,UNUserNotificationCenterDelegate {
             let trigger = repeatForIOS10(fireDate: fireDate, repeatInterval: repeatInterval)
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
             let center = UNUserNotificationCenter.current()
+            center.delegate = self
             center.add(request, withCompletionHandler: { (error: Error!) in
                 
             })

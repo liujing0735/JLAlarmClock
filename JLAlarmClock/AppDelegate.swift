@@ -13,9 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        firstLaunch()
         
         let alarmClockTable = JLAlarmClockTableViewController()
         alarmClockTable.tabBarItem.title = "闹钟"
@@ -60,6 +60,142 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    private func firstLaunch() {
+        let databaseVersion = 1.0
+        if !UserDefaults.standard.bool(forKey: "firstLaunch") {
+            UserDefaults.standard.set(true, forKey: "firstLaunch")
+            
+            createAlarmClockInfoTable()
+            createAlarmClockUserInfoTable()
+            createAlarmClockDatabaseVersionTable()
+            insertAlarmClockDatabaseVersion(version: databaseVersion)
+        }else {
+            
+            let dbVersion = alarmClockDatabaseVersion()
+            if dbVersion != databaseVersion {
+                if dbVersion == 1.0 {
+                    // 数据库版本更新
+                    updateAlarmClockDatabaseVersion(version: databaseVersion)
+                }
+            }
+        }
+    }
+    
+    private func insertAlarmClockDatabaseVersion(version: Double) {
+        let sqlMgr = JLSQLiteManager.shared
+        if sqlMgr.open() {
+            let data: [String: Any] = [
+                "alarm_clock_database_version": version,
+                "data_update_time": timeStampString]
+                sqlMgr.insert(tbName: "alarm_clock_database_version_table", data: data, block: { (error) in
+                    if error != nil {
+                        log((error?.errmsg)!)
+                    }
+                })
+            sqlMgr.close()
+        }
+    }
+    
+    private func updateAlarmClockDatabaseVersion(version: Double) {
+        let sqlMgr = JLSQLiteManager.shared
+        if sqlMgr.open() {
+            let data: [String: Any] = [
+                "alarm_clock_database_version": version,
+                "data_update_time": timeStampString]
+            sqlMgr.update(tbName: "alarm_clock_database_version_table", data: data, block: { (error) in
+                if error != nil {
+                    log((error?.errmsg)!)
+                }
+            })
+            sqlMgr.close()
+        }
+    }
+    
+    private func alarmClockDatabaseVersion() -> Double {
+        var version = 0.0
+        let sqlMgr = JLSQLiteManager.shared
+        if sqlMgr.open() {
+            sqlMgr.select(tbName: "alarm_clock_database_version_table", block: { (dicts, error) in
+                if error != nil {
+                    log((error?.errmsg)!)
+                }else {
+                    if dicts.count > 0 {
+                        version = dicts[0]["alarm_clock_database_version"] as! Double
+                    }
+                }
+            })
+            sqlMgr.close()
+        }
+        return version
+    }
+    
+    private func createAlarmClockDatabaseVersionTable() {
+        let sqlMgr = JLSQLiteManager.shared
+        if sqlMgr.open() {
+            let column: [String: JLSQLiteDataType] = [
+                "alarm_clock_database_version_id": .Integer,
+                "alarm_clock_database_version": .Real,
+                "data_update_time": .Real]
+            let constraint: [String: [JLSQLiteConstraint]] = ["alarm_clock_database_version_id": [.AutoPrimaryKey]]
+            sqlMgr.createTable(tbName: "alarm_clock_database_version_table", tbColumn: column, tbConstraint: constraint) { (error) in
+                
+                if error != nil {
+                    log((error?.errmsg)!)
+                }
+            }
+            sqlMgr.close()
+        }
+    }
+    
+    private func createAlarmClockUserInfoTable() {
+        let sqlMgr = JLSQLiteManager.shared
+        if sqlMgr.open() {
+            let column: [String: JLSQLiteDataType] = [
+                "alarm_clock_user_id": .Integer,
+                "alarm_clock_user_account": .Text,
+                "alarm_clock_user_nickname": .Text,
+                "alarm_clock_user_icon": .Text,
+                "alarm_clock_user_name": .Text,
+                "alarm_clock_user_phone": .Text,
+                "alarm_clock_user_email": .Text,
+                "alarm_clock_user_level": .Integer,
+                "alarm_clock_user_vip": .Integer,
+                "data_update_time": .Real]
+            let constraint: [String: [JLSQLiteConstraint]] = ["alarm_clock_user_id": [.AutoPrimaryKey]]
+            sqlMgr.createTable(tbName: "alarm_clock_user_info_table", tbColumn: column, tbConstraint: constraint) { (error) in
+                
+                if error != nil {
+                    log((error?.errmsg)!)
+                }
+            }
+            sqlMgr.close()
+        }
+    }
+    
+    private func createAlarmClockInfoTable() {
+        let sqlMgr = JLSQLiteManager.shared
+        if sqlMgr.open() {
+            let column: [String: JLSQLiteDataType] = [
+                "alarm_clock_id": .Integer,
+                "alarm_clock_name": .Text,
+                "alarm_clock_time": .Real,
+                "alarm_clock_start_date": .Real,
+                "alarm_clock_repeats_number": .Integer,
+                "alarm_clock_repeats_unit": .Integer,
+                "alarm_clock_repeats_weekday": .Text,
+                "alarm_clock_state": .Integer,
+                "alarm_clock_user_id": .Integer,
+                "alarm_clock_delete_flag": .Integer,
+                "data_update_time": .Real]
+            let constraint: [String: [JLSQLiteConstraint]] = ["alarm_clock_id": [.AutoPrimaryKey], "alarm_clock_info_table,alarm_clock_user_id": [.ForeignKey]]
+            sqlMgr.createTable(tbName: "alarm_clock_info_table", tbColumn: column, tbConstraint: constraint) { (error) in
+                
+                if error != nil {
+                    log((error?.errmsg)!)
+                }
+            }
+            sqlMgr.close()
+        }
+    }
 }
 

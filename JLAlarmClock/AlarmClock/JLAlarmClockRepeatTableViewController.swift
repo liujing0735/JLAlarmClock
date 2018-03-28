@@ -17,8 +17,23 @@ struct JLWeekdaySelect {
     var isThu: Bool = false
     var isFri: Bool = false
     var isSat: Bool = false
-    func string() -> String {
-        return "\((isSun ? "1" : "0"))\((isMon ? "1" : "0"))\((isTue ? "1" : "0"))\((isWed ? "1" : "0"))\((isThu ? "1" : "0"))\((isFri ? "1" : "0"))\((isSat ? "1" : "0"))"
+
+    var string: String {
+        set {
+            if newValue.count == 7 {
+                let values = newValue.strings()
+                isSun = Bool(exactly: NSNumber(value: Int(values[0])!))!
+                isMon = Bool(exactly: NSNumber(value: Int(values[1])!))!
+                isTue = Bool(exactly: NSNumber(value: Int(values[2])!))!
+                isWed = Bool(exactly: NSNumber(value: Int(values[3])!))!
+                isThu = Bool(exactly: NSNumber(value: Int(values[4])!))!
+                isFri = Bool(exactly: NSNumber(value: Int(values[5])!))!
+                isSat = Bool(exactly: NSNumber(value: Int(values[6])!))!
+            }
+        }
+        get {
+            return "\((isSun ? "1" : "0"))\((isMon ? "1" : "0"))\((isTue ? "1" : "0"))\((isWed ? "1" : "0"))\((isThu ? "1" : "0"))\((isFri ? "1" : "0"))\((isSat ? "1" : "0"))"
+        }
     }
 }
 
@@ -29,12 +44,12 @@ struct JLWeekdaySelect {
 /// - EveryMonth: 每月
 /// - EveryWeek: 每周
 /// - EveryDay: 每天
-enum JLRepeatUnit {
-    case None
-    case EveryYear
-    case EveryMonth
-    case EveryWeek
+enum JLRepeatUnit: Int {
+    case None = 0
     case EveryDay
+    case EveryWeek
+    case EveryMonth
+    case EveryYear
 }
 
 protocol JLRepeatDelegate {
