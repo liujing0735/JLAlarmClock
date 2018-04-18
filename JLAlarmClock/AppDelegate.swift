@@ -85,9 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sqlMgr = JLSQLiteManager.shared
         if sqlMgr.open() {
             let data: [String: Any] = [
-                "alarm_clock_database_version": version,
-                "data_update_time": timeStampString]
-                sqlMgr.insert(tbName: "alarm_clock_database_version_table", data: data, block: { (error) in
+                "db_version_number": version,
+                "update_time": timeStampString]
+                sqlMgr.insert(tbName: "db_version_table", data: data, block: { (error) in
                     if error != nil {
                         log((error?.errmsg)!)
                     }
@@ -100,9 +100,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sqlMgr = JLSQLiteManager.shared
         if sqlMgr.open() {
             let data: [String: Any] = [
-                "alarm_clock_database_version": version,
-                "data_update_time": timeStampString]
-            sqlMgr.update(tbName: "alarm_clock_database_version_table", data: data, block: { (error) in
+                "db_version_number": version,
+                "update_time": timeStampString]
+            sqlMgr.update(tbName: "db_version_table", data: data, block: { (error) in
                 if error != nil {
                     log((error?.errmsg)!)
                 }
@@ -115,12 +115,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var version = 0.0
         let sqlMgr = JLSQLiteManager.shared
         if sqlMgr.open() {
-            sqlMgr.select(tbName: "alarm_clock_database_version_table", block: { (dicts, error) in
+            sqlMgr.select(tbName: "db_version_table", block: { (dicts, error) in
                 if error != nil {
                     log((error?.errmsg)!)
                 }else {
                     if dicts.count > 0 {
-                        version = dicts[0]["alarm_clock_database_version"] as! Double
+                        version = dicts[0]["db_version_number"] as! Double
                     }
                 }
             })
@@ -133,11 +133,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sqlMgr = JLSQLiteManager.shared
         if sqlMgr.open() {
             let column: [String: JLSQLiteDataType] = [
-                "alarm_clock_database_version_id": .Integer,
-                "alarm_clock_database_version": .Real,
-                "data_update_time": .Real]
-            let constraint: [String: [JLSQLiteConstraint]] = ["alarm_clock_database_version_id": [.AutoPrimaryKey]]
-            sqlMgr.createTable(tbName: "alarm_clock_database_version_table", tbColumn: column, tbConstraint: constraint) { (error) in
+                "db_version_id": .Integer,
+                "db_version_number": .Real,
+                "update_time": .Real]
+            let constraint: [String: [JLSQLiteConstraint]] = ["db_version_id": [.AutoPrimaryKey]]
+            sqlMgr.createTable(tbName: "db_version_table", tbColumn: column, tbConstraint: constraint) { (error) in
                 
                 if error != nil {
                     log((error?.errmsg)!)
@@ -151,18 +151,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sqlMgr = JLSQLiteManager.shared
         if sqlMgr.open() {
             let column: [String: JLSQLiteDataType] = [
-                "alarm_clock_user_id": .Integer,
-                "alarm_clock_user_account": .Text,
-                "alarm_clock_user_nickname": .Text,
-                "alarm_clock_user_icon": .Text,
-                "alarm_clock_user_name": .Text,
-                "alarm_clock_user_phone": .Text,
-                "alarm_clock_user_email": .Text,
-                "alarm_clock_user_level": .Integer,
-                "alarm_clock_user_vip": .Integer,
-                "data_update_time": .Real]
-            let constraint: [String: [JLSQLiteConstraint]] = ["alarm_clock_user_id": [.AutoPrimaryKey]]
-            sqlMgr.createTable(tbName: "alarm_clock_user_info_table", tbColumn: column, tbConstraint: constraint) { (error) in
+                "user_id": .Integer,
+                "user_account": .Text,
+                "user_password": .Text,
+                "user_nickname": .Text,
+                "user_icon": .Text,
+                "user_name": .Text,
+                "user_phone": .Text,
+                "user_email": .Text,
+                "user_level": .Integer,
+                "user_vip": .Integer,
+                "update_time": .Real]
+            let constraint: [String: [JLSQLiteConstraint]] = ["user_id": [.AutoPrimaryKey]]
+            sqlMgr.createTable(tbName: "user_info_table", tbColumn: column, tbConstraint: constraint) { (error) in
                 
                 if error != nil {
                     log((error?.errmsg)!)
@@ -178,16 +179,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let column: [String: JLSQLiteDataType] = [
                 "alarm_clock_id": .Integer,
                 "alarm_clock_name": .Text,
+                "alarm_clock_content": .Text,
                 "alarm_clock_time": .Real,
-                "alarm_clock_start_date": .Real,
                 "alarm_clock_repeats_number": .Integer,
                 "alarm_clock_repeats_unit": .Integer,
                 "alarm_clock_repeats_weekday": .Text,
                 "alarm_clock_state": .Integer,
-                "alarm_clock_user_id": .Integer,
                 "alarm_clock_delete_flag": .Integer,
-                "data_update_time": .Real]
-            let constraint: [String: [JLSQLiteConstraint]] = ["alarm_clock_id": [.AutoPrimaryKey], "alarm_clock_info_table,alarm_clock_user_id": [.ForeignKey]]
+                "user_id": .Integer,
+                "update_time": .Real]
+            let constraint: [String: [JLSQLiteConstraint]] = ["alarm_clock_id": [.AutoPrimaryKey], "alarm_clock_info_table,user_id": [.ForeignKey]]
             sqlMgr.createTable(tbName: "alarm_clock_info_table", tbColumn: column, tbConstraint: constraint) { (error) in
                 
                 if error != nil {
