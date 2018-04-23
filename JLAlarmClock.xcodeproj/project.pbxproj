@@ -16,6 +16,8 @@
 		228024272025617E00AF9CD8 /* JLBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228024262025617E00AF9CD8 /* JLBaseViewController.swift */; };
 		22802429202561BD00AF9CD8 /* JLBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22802428202561BD00AF9CD8 /* JLBaseTableViewController.swift */; };
 		2280242B202561E700AF9CD8 /* JLBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2280242A202561E700AF9CD8 /* JLBaseTabBarController.swift */; };
+		22926FA9208E11A8004E9DDE /* JLAlarmClockInputTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926FA8208E11A8004E9DDE /* JLAlarmClockInputTitleViewController.swift */; };
+		22926FAB208E11D6004E9DDE /* JLAlarmClockInputContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926FAA208E11D6004E9DDE /* JLAlarmClockInputContentViewController.swift */; };
 		22BBAA911F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA8C1F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift */; };
 		22BBAA921F42967C00242E50 /* JLAlarmClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA8D1F42967C00242E50 /* JLAlarmClockTableViewCell.swift */; };
 		22BBAA931F42967C00242E50 /* JLAlarmClockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA8E1F42967C00242E50 /* JLAlarmClockTableViewController.swift */; };
@@ -61,6 +63,8 @@
 		228024262025617E00AF9CD8 /* JLBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBaseViewController.swift; sourceTree = "<group>"; };
 		22802428202561BD00AF9CD8 /* JLBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBaseTableViewController.swift; sourceTree = "<group>"; };
 		2280242A202561E700AF9CD8 /* JLBaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBaseTabBarController.swift; sourceTree = "<group>"; };
+		22926FA8208E11A8004E9DDE /* JLAlarmClockInputTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockInputTitleViewController.swift; sourceTree = "<group>"; };
+		22926FAA208E11D6004E9DDE /* JLAlarmClockInputContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockInputContentViewController.swift; sourceTree = "<group>"; };
 		22BBAA8C1F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLAlarmClockSettingTableViewController.swift; sourceTree = "<group>"; };
 		22BBAA8D1F42967C00242E50 /* JLAlarmClockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLAlarmClockTableViewCell.swift; sourceTree = "<group>"; };
 		22BBAA8E1F42967C00242E50 /* JLAlarmClockTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLAlarmClockTableViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				22BBAA8E1F42967C00242E50 /* JLAlarmClockTableViewController.swift */,
 				22BBAA8C1F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift */,
 				22C8C15220282DEB004439AA /* JLAlarmClockRepeatTableViewController.swift */,
+				22926FA8208E11A8004E9DDE /* JLAlarmClockInputTitleViewController.swift */,
+				22926FAA208E11D6004E9DDE /* JLAlarmClockInputContentViewController.swift */,
 			);
 			path = AlarmClock;
 			sourceTree = "<group>";
@@ -420,7 +426,9 @@
 				2280242B202561E700AF9CD8 /* JLBaseTabBarController.swift in Sources */,
 				22BBAA911F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift in Sources */,
 				228024272025617E00AF9CD8 /* JLBaseViewController.swift in Sources */,
+				22926FA9208E11A8004E9DDE /* JLAlarmClockInputTitleViewController.swift in Sources */,
 				22C8C15520293218004439AA /* JLSQLiteManager.swift in Sources */,
+				22926FAB208E11D6004E9DDE /* JLAlarmClockInputContentViewController.swift in Sources */,
 				22C8C159202C4896004439AA /* JLAlarmClockManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,10 +23,10 @@ class JLAlarmClockTableViewCell: UITableViewCell {
     
     func reloadData(dict: Dictionary<String, Any>) {
         let timeString = dict["alarm_clock_time"] as! String
-        let times = timeString.components(separatedBy: ":")
+        let times = timeString.components(separatedBy: " ")[1].components(separatedBy: ":")
         timeLabel.text = "\(times[0]):\(times[1])"
         titleLabel.text = dict["alarm_clock_name"] as? String
-        detailLabel.text = dict["alarm_clock_start_date"] as? String
+        detailLabel.text = timeString.components(separatedBy: " ")[0]
         alarmClockSwitch.isOn = Bool(exactly: dict["alarm_clock_state"] as! NSNumber)!
     }
     
@@ -38,12 +38,12 @@ class JLAlarmClockTableViewCell: UITableViewCell {
         timeLabel.font = UIFont.systemFont(ofSize: 21)
         self.addSubview(timeLabel)
         
-        titleLabel.frame = CGRect(x: 60+10, y: 10, width: 151, height: 20)
+        titleLabel.frame = CGRect(x: 60+20, y: 10, width: 151, height: 20)
         titleLabel.textColor = UIColor.black
         titleLabel.font = UIFont.systemFont(ofSize: 17)
         self.addSubview(titleLabel)
         
-        detailLabel.frame = CGRect(x: 60+10, y: 10+20, width: 151, height: 20)
+        detailLabel.frame = CGRect(x: 60+20, y: 10+20, width: 151, height: 20)
         detailLabel.textColor = UIColor.lightGray
         detailLabel.font = UIFont.systemFont(ofSize: 13)
         self.addSubview(detailLabel)

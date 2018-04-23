@@ -9,7 +9,7 @@
 import UIKit
 import PGDatePicker
 
-class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePickerDelegate,JLRepeatDelegate {
+class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePickerDelegate,JLRepeatDelegate,JLInputTitleDelegate {
     
     var dataSource: Dictionary<String, Any>!
     
@@ -57,18 +57,27 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
+    private func gotoAlarmClockInputTitle() {
+        let controller = JLAlarmClockInputTitleViewController()
+        controller.delegate = self
+        if rowValue["闹钟标题"] != "" {
+            controller.alarmClockTitle = rowValue["闹钟标题"]
+        }
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     override func rightItemClick(sender: Any) {
         let sqlMgr = JLSQLiteManager.shared
         if sqlMgr.open() {
-            let time = String(format: "%02d", dateComponents.hour!)+":"+String(format: "%02d", dateComponents.minute!)+":"+String(format: "%02d", dateComponents.second!)
-            let date = String(format: "%04d", dateComponents.year!)+"-"+String(format: "%02d", dateComponents.month!)+"-"+String(format: "%02d", dateComponents.day!)
-            let data: [String: Any] = ["alarm_clock_name": "起床闹钟", "alarm_clock_time": time,
-                "alarm_clock_start_date": date,
+            let time = String(format: "%04d", dateComponents.year!)+"-"+String(format: "%02d", dateComponents.month!)+"-"+String(format: "%02d", dateComponents.day!)+" "+String(format: "%02d", dateComponents.hour!)+":"+String(format: "%02d", dateComponents.minute!)+":"+String(format: "%02d", dateComponents.second!)
+            let data: [String: Any] = ["alarm_clock_name": "起床闹钟",
+                "alarm_clock_content": "",
+                "alarm_clock_time": time,
                 "alarm_clock_repeats_number": 1,
                 "alarm_clock_repeats_unit": repeatUnit.rawValue,
                 "alarm_clock_repeats_weekday": weekdaySelect.string,
                 "alarm_clock_state": 1,
-                "alarm_clock_user_id": 0,
+                "user_id": 0,
                 "alarm_clock_delete_flag": 0]
             if dataSource == nil {
                 sqlMgr.insert(tbName: "alarm_clock_info_table", data: data, block: { (error) in
@@ -196,6 +205,7 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
         
         switch rowTitles[indexPath.row] {
         case "闹钟标题":
+            gotoAlarmClockInputTitle()
             break
         case "开始日期":
             showDatePickManager()
@@ -274,12 +284,12 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
     func datePicker(_ datePicker: PGDatePicker!, didSelectDate dateComponents: DateComponents!) {
         
         if datePicker == self.datePicker {
-            print(dateComponents.hour!, dateComponents.minute!, dateComponents.second!)
+            //print(dateComponents.hour!, dateComponents.minute!, dateComponents.second!)
             self.dateComponents.hour = dateComponents.hour
             self.dateComponents.minute = dateComponents.minute
             self.dateComponents.second = dateComponents.second
         }else {
-            print(dateComponents.year!, dateComponents.month!, dateComponents.day!)
+            //print(dateComponents.year!, dateComponents.month!, dateComponents.day!)
             self.dateComponents.year = dateComponents.year
             self.dateComponents.month = dateComponents.month
             self.dateComponents.day = dateComponents.day
@@ -305,6 +315,12 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
         
         rowValue["响铃周期"] = repeatsName(repeatUnit: repeatUnit, weekdaySelect: weekdaySelect)
         
+        self.tableView.reloadData()
+    }
+    
+    // MARK: - JLInputTitleDelegate
+    func didInputTitle(title: String) {
+        rowValue["闹钟标题"] = title
         self.tableView.reloadData()
     }
     
