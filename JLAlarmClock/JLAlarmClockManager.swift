@@ -18,62 +18,125 @@ class JLAlarmClockManager: NSObject {
         super.init()
     }
     
-    func addAlarmClockOnlyRangOnce(data: Dictionary<String, Any>) {
+    func addAlarmClock(dict: Dictionary<String, Any>) {
+        
+    }
+    
+    func addAlarmClockOnlyRangOnce(dict: Dictionary<String, Any>) {
         let localNotMgr = JLLocalNotificationManager.shared
         localNotMgr.registerLocalNotification()
-        //localNotMgr.addLocalNotification(fireDate: <#T##Date#>, identifier: <#T##String#>, alertTitle: , repeatInterval: .None)
-    }
-    
-    func addAlarmClockEveryDay(data: Dictionary<String, Any>) {
         
-    }
-    
-    func addAlarmClockEveryWeek(data: Dictionary<String, Any>) {
+        let date: Date = dict["alarm_clock_time"] as! Date
         
-    }
-    
-    func addAlarmClockEveryMonth(data: Dictionary<String, Any>) {
+        let id: String = dict["alarm_clock_id"] as! String
+        let title: String = dict["alarm_clock_title"] as! String
+        let content: String = dict["alarm_clock_content"] as! String
+        let time: String = dict["alarm_clock_time"] as! String
+        let identifier: String = (id + title + content + time).md5
         
+        localNotMgr.addLocalNotification(fireDate: date, identifier: identifier, alertTitle: title, repeatInterval: .None)
     }
     
-    func addAlarmClockEveryYear(data: Dictionary<String, Any>) {
+    func addAlarmClockEveryDay(dict: Dictionary<String, Any>) {
+        let localNotMgr = JLLocalNotificationManager.shared
+        localNotMgr.registerLocalNotification()
         
+        let date: Date = dict["alarm_clock_time"] as! Date
+        
+        let id: String = dict["alarm_clock_id"] as! String
+        let title: String = dict["alarm_clock_title"] as! String
+        let content: String = dict["alarm_clock_content"] as! String
+        let time: String = dict["alarm_clock_time"] as! String
+        let identifier: String = (id + title + content + time).md5
+        
+        localNotMgr.addLocalNotification(fireDate: date, identifier: identifier, alertTitle: title, repeatInterval: .Day)
     }
     
-    /// 连续的7天日期
+    func addAlarmClockEveryWeek(dict: Dictionary<String, Any>) {
+        let localNotMgr = JLLocalNotificationManager.shared
+        localNotMgr.registerLocalNotification()
+        
+        let date: Date = dict["alarm_clock_time"] as! Date
+        
+        let id: String = dict["alarm_clock_id"] as! String
+        let title: String = dict["alarm_clock_title"] as! String
+        let content: String = dict["alarm_clock_content"] as! String
+        let time: String = dict["alarm_clock_time"] as! String
+        let identifier: String = (id + title + content + time).md5
+        
+        let dates = sevenDaysOfThisWeek(date: date)
+        let repeats_weekday: String = dict["alarm_clock_repeats_weekday"] as! String
+        let weekdays = repeats_weekday.strings()
+        for index in 0..<weekdays.count {
+            if weekdays[index] == "1" {
+                localNotMgr.addLocalNotification(fireDate: dates[index], identifier: identifier, alertTitle: title, repeatInterval: .Weekday)
+            }
+        }
+    }
+    
+    func addAlarmClockEveryMonth(dict: Dictionary<String, Any>) {
+        let localNotMgr = JLLocalNotificationManager.shared
+        localNotMgr.registerLocalNotification()
+        
+        let date: Date = dict["alarm_clock_time"] as! Date
+        
+        let id: String = dict["alarm_clock_id"] as! String
+        let title: String = dict["alarm_clock_title"] as! String
+        let content: String = dict["alarm_clock_content"] as! String
+        let time: String = dict["alarm_clock_time"] as! String
+        let identifier: String = (id + title + content + time).md5
+        
+        localNotMgr.addLocalNotification(fireDate: date, identifier: identifier, alertTitle: title, repeatInterval: .Month)
+    }
+    
+    func addAlarmClockEveryYear(dict: Dictionary<String, Any>) {
+        let localNotMgr = JLLocalNotificationManager.shared
+        localNotMgr.registerLocalNotification()
+        
+        let date: Date = dict["alarm_clock_time"] as! Date
+        
+        let id: String = dict["alarm_clock_id"] as! String
+        let title: String = dict["alarm_clock_title"] as! String
+        let content: String = dict["alarm_clock_content"] as! String
+        let time: String = dict["alarm_clock_time"] as! String
+        let identifier: String = (id + title + content + time).md5
+        
+        localNotMgr.addLocalNotification(fireDate: date, identifier: identifier, alertTitle: title, repeatInterval: .Year)
+    }
+    
+    /// 7天日期
     ///
-    /// - Returns: 从今天起连续的7天的日期
-    func sevenConsecutiveDaysFromToday() -> [Date] {
-        let today = Date()
+    /// - Returns: 指定日期起连续的7天的日期
+    func sevenConsecutiveDays(date: Date = Date()) -> [Date] {
         var dates = [Date]()
         for i in 0...6 {
             let timeInterval = TimeInterval(i*24*60*60)
-            dates.append(today.addingTimeInterval(timeInterval))
+            dates.append(date.addingTimeInterval(timeInterval))
         }
         return dates
     }
     
-    /// 本周的日期
+    /// 7天日期
     ///
-    /// - Returns: 本周周日到周六的日期
-    func sevenDateOfThisWeek() -> [Date] {
-        let today = Date()
-        let calendar: Calendar = Calendar.current
-        let todayComponents: DateComponents = calendar.dateComponents([.year,.month,.weekday,.weekdayOrdinal,.day,.hour,.minute,.second], from: today)
+    /// - Returns: 指定日期所在周的7天的日期
+    func sevenDaysOfThisWeek(date: Date = Date()) -> [Date] {
+        var calendar: Calendar = Calendar.current
+        calendar.firstWeekday = 2// 设定每周的第一天从星期一开始
+        let todayComponents: DateComponents = calendar.dateComponents([.year,.month,.weekday,.weekdayOrdinal,.day,.hour,.minute,.second], from: date)
         let weekday: Int = todayComponents.weekday!
         
         var dates = [Date]()
         if weekday > 1 {
             for i in 1...weekday-1 {
                 let timeInterval = TimeInterval((weekday-i)*24*60*60)
-                dates.append(today.addingTimeInterval(-timeInterval))
+                dates.append(date.addingTimeInterval(-timeInterval))
             }
         }
-        dates.append(today)
+        dates.append(date)
         if weekday < 7 {
             for j in weekday+1...7 {
                 let timeInterval = TimeInterval((j-weekday)*24*60*60)
-                dates.append(today.addingTimeInterval(timeInterval))
+                dates.append(date.addingTimeInterval(timeInterval))
             }
         }
         return dates
@@ -81,11 +144,11 @@ class JLAlarmClockManager: NSObject {
     
     /// 本周的工作日
     ///
-    /// - Returns: 本周周一到周五的日期
-    func workingDayOfThisWeek() -> [Date] {
-        var dates = sevenDateOfThisWeek()
+    /// - Returns: 指定日期所在周的周一到周五的日期
+    func workingDayOfThisWeek(date: Date = Date()) -> [Date] {
+        var dates = sevenDaysOfThisWeek(date: date)
         if dates.count == 7 {
-            dates.remove(at: 0)// 移除周日
+            dates.remove(at: 5)// 移除周日
             dates.remove(at: 6)// 移除周六
         }
         return dates
