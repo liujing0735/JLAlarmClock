@@ -48,6 +48,11 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
             })
             sqlMgr.close()
         }
+        
+        let acMgr = JLAlarmClockManager.shared
+        for dict in alarmClocks {
+            acMgr.addAlarmClock(dict: dict)
+        }
     }
 
     override func didReceiveMemoryWarning() {

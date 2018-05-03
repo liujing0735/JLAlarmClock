@@ -46,10 +46,10 @@ struct JLWeekdaySelect {
 /// - EveryDay: 每天
 enum JLRepeatUnit: Int {
     case None = 0
-    case EveryDay
-    case EveryWeek
-    case EveryMonth
     case EveryYear
+    case EveryMonth
+    case EveryWeek
+    case EveryDay
 }
 
 protocol JLRepeatDelegate {

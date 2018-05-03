@@ -19,7 +19,34 @@ class JLAlarmClockManager: NSObject {
     }
     
     func addAlarmClock(dict: Dictionary<String, Any>) {
-        
+        let repeatsUnit = dict["alarm_clock_repeats_unit"] as! Int
+        switch JLRepeatUnit(rawValue: repeatsUnit) {
+        case .None:
+        {
+            addAlarmClockOnlyRangOnce(dict: dict)
+        }
+            break
+        case .EveryYear:
+        {
+            addAlarmClockEveryYear(dict: dict)
+        }
+            break
+        case .EveryMonth:
+        {
+            addAlarmClockEveryMonth(dict: dict)
+        }
+            break
+        case .EveryWeek:
+        {
+            addAlarmClockEveryWeek(dict: dict)
+        }
+            break
+        case .EveryDay:
+        {
+            addAlarmClockEveryDay(dict: dict)
+        }
+            break
+        }
     }
     
     func addAlarmClockOnlyRangOnce(dict: Dictionary<String, Any>) {
@@ -65,11 +92,11 @@ class JLAlarmClockManager: NSObject {
         let identifier: String = (id + title + content + time).md5
         
         let dates = sevenDaysOfThisWeek(date: date)
-        let repeats_weekday: String = dict["alarm_clock_repeats_weekday"] as! String
-        let weekdays = repeats_weekday.strings()
+        let repeatsWeekday: String = dict["alarm_clock_repeats_weekday"] as! String
+        let weekdays = repeatsWeekday.strings()
         for index in 0..<weekdays.count {
             if weekdays[index] == "1" {
-                localNotMgr.addLocalNotification(fireDate: dates[index], identifier: identifier, alertTitle: title, repeatInterval: .Weekday)
+                localNotMgr.addLocalNotification(fireDate: dates[index], identifier: identifier+String(format: "%d", index), alertTitle: title, repeatInterval: .Weekday)
             }
         }
     }
@@ -102,6 +129,11 @@ class JLAlarmClockManager: NSObject {
         let identifier: String = (id + title + content + time).md5
         
         localNotMgr.addLocalNotification(fireDate: date, identifier: identifier, alertTitle: title, repeatInterval: .Year)
+    }
+    
+    func removeAlarmClock(identifier: String) {
+        let localNotMgr = JLLocalNotificationManager.shared
+        localNotMgr.removeLocalNotification(identifier: identifier)
     }
     
     /// 7天日期
