@@ -18,6 +18,7 @@
 		2280242B202561E700AF9CD8 /* JLBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2280242A202561E700AF9CD8 /* JLBaseTabBarController.swift */; };
 		22926FA9208E11A8004E9DDE /* JLAlarmClockInputTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926FA8208E11A8004E9DDE /* JLAlarmClockInputTitleViewController.swift */; };
 		22926FAB208E11D6004E9DDE /* JLAlarmClockInputContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22926FAA208E11D6004E9DDE /* JLAlarmClockInputContentViewController.swift */; };
+		22960B56209C98BC00960C8B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22960B58209C98BC00960C8B /* InfoPlist.strings */; };
 		22BBAA911F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA8C1F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift */; };
 		22BBAA921F42967C00242E50 /* JLAlarmClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA8D1F42967C00242E50 /* JLAlarmClockTableViewCell.swift */; };
 		22BBAA931F42967C00242E50 /* JLAlarmClockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA8E1F42967C00242E50 /* JLAlarmClockTableViewController.swift */; };
@@ -65,6 +66,9 @@
 		2280242A202561E700AF9CD8 /* JLBaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBaseTabBarController.swift; sourceTree = "<group>"; };
 		22926FA8208E11A8004E9DDE /* JLAlarmClockInputTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockInputTitleViewController.swift; sourceTree = "<group>"; };
 		22926FAA208E11D6004E9DDE /* JLAlarmClockInputContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockInputContentViewController.swift; sourceTree = "<group>"; };
+		22960B57209C98BC00960C8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		22960B59209C98D900960C8B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		22960B5A209C98E100960C8B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		22BBAA8C1F42967C00242E50 /* JLAlarmClockSettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLAlarmClockSettingTableViewController.swift; sourceTree = "<group>"; };
 		22BBAA8D1F42967C00242E50 /* JLAlarmClockTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLAlarmClockTableViewCell.swift; sourceTree = "<group>"; };
 		22BBAA8E1F42967C00242E50 /* JLAlarmClockTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLAlarmClockTableViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				2270E8E71F301CD200979959 /* LaunchScreen.storyboard */,
 				2270E8EA1F301CD300979959 /* Info.plist */,
 				22BBAA951F42E0BA00242E50 /* JLAlarmClock-Bridging-Header.h */,
+				22960B58209C98BC00960C8B /* InfoPlist.strings */,
 			);
 			path = JLAlarmClock;
 			sourceTree = "<group>";
@@ -311,6 +316,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 2270E8D01F301CD200979959;
 			productRefGroup = 2270E8DA1F301CD200979959 /* Products */;
@@ -330,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2270E8E91F301CD300979959 /* LaunchScreen.storyboard in Resources */,
+				22960B56209C98BC00960C8B /* InfoPlist.strings in Resources */,
 				2270E8E61F301CD200979959 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +481,16 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		22960B58209C98BC00960C8B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22960B57209C98BC00960C8B /* en */,
+				22960B59209C98D900960C8B /* zh-Hans */,
+				22960B5A209C98E100960C8B /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -480,6 +498,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -539,6 +558,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -591,7 +611,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4835C135DC0FB60060F0B5EF /* Pods-JLAlarmClock.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_male;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = MVU5F37333;
 				INFOPLIST_FILE = JLAlarmClock/Info.plist;
@@ -610,7 +630,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CE764E10CECF6EF14E2E3EA7 /* Pods-JLAlarmClock.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_male;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = MVU5F37333;
 				INFOPLIST_FILE = JLAlarmClock/Info.plist;
