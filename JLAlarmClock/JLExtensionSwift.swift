@@ -58,7 +58,17 @@ var timeStampInt: Int {
     }
 }
 
+extension Int {
+    var toString: String {
+        return "\(self)"
+    }
+}
+
 extension String {
+    
+    var toInt: Int {
+        return Int(self)!
+    }
     
     /// 截取子字符串
     ///
@@ -99,9 +109,57 @@ extension String {
         for i in 0 ..< digestLen {
             hash.appendFormat("%02x", result[i])
         }
-//        result.deinitialize()
         result.deinitialize(count: digestLen)
         
         return String(format: hash as String)
+    }
+}
+
+extension Dictionary {
+    
+    func anyForKey(key: String) -> Any! {
+        let dict: Dictionary<String, Any> = self as! Dictionary<String, Any>
+        let keys: [String] = [String](dict.keys)
+        if keys.contains(key) {
+            return dict[key]
+        }
+        return nil
+    }
+    
+    func dateForKey(key: String, format: String = "yyyy-MM-dd HH:mm:ss") -> Date {
+        let value = anyForKey(key: key)
+        if value != nil {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = format
+            let date: Date = dateFormatter.date(from: value as! String)!
+            return date
+        }
+        return Date()
+    }
+    
+    func stringForKey(key: String) -> String {
+        let value = anyForKey(key: key)
+        if value != nil {
+            if value is String {
+                return value as! String
+            }
+            if value is Int {
+                return "\(value as! Int)"
+            }
+        }
+        return ""
+    }
+    
+    func intForKey(key: String) -> Int {
+        let value = anyForKey(key: key)
+        if value != nil {
+            if value is String {
+                return Int(value as! String)!
+            }
+            if value is Int {
+                return value as! Int
+            }
+        }
+        return 0
     }
 }

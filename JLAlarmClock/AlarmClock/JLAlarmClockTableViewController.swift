@@ -38,7 +38,7 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
         
         let sqlMgr = JLSQLiteManager.shared
         if sqlMgr.open() {
-            sqlMgr.select(tbName: "alarm_clock_info_table", block: { (dicts, error) in
+            sqlMgr.select(tbName: "alarm_clock_info_table", rowWhere: "alarm_clock_delete_flag = 0", block: { (dicts, error) in
                 if error != nil {
                     log((error?.errmsg)!)
                 }else {
@@ -105,8 +105,27 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let dict = alarmClocks[indexPath.row]
         if editingStyle == .delete {
-            
+            // 更新数据库
+            let sqlMgr = JLSQLiteManager.shared
+            if sqlMgr.open() {
+                
+                let id: String = "\(dict["alarm_clock_id"] as! Int)"
+                let data: [String: Any] = ["alarm_clock_delete_flag": 1]
+                sqlMgr.update(tbName: "alarm_clock_info_table", data: data, rowWhere: "alarm_clock_id = \(id)", block: { (error) in
+                    if error != nil {
+                        log((error?.errmsg)!)
+                    }
+                })
+            }
+            // 移除本地推送
+            let acMgr = JLAlarmClockManager.shared
+            acMgr.removeAlarmClock(dict: dict)
+            // 移除页面数据
+            alarmClocks.remove(at: indexPath.row)
+            // 刷新页面数据
+            self.tableView.reloadData()
         }
     }
 

@@ -69,8 +69,9 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
     override func rightItemClick(sender: Any) {
         let sqlMgr = JLSQLiteManager.shared
         if sqlMgr.open() {
+            let title: String = rowValue["闹钟标题"]!
             let time = String(format: "%04d", dateComponents.year!)+"-"+String(format: "%02d", dateComponents.month!)+"-"+String(format: "%02d", dateComponents.day!)+" "+String(format: "%02d", dateComponents.hour!)+":"+String(format: "%02d", dateComponents.minute!)+":"+String(format: "%02d", dateComponents.second!)
-            let data: [String: Any] = ["alarm_clock_name": "起床闹钟",
+            let data: [String: Any] = ["alarm_clock_name": title,
                 "alarm_clock_content": "",
                 "alarm_clock_time": time,
                 "alarm_clock_repeats_number": 1,
@@ -139,7 +140,7 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
             
             rowValue["闹钟标题"] = (dataSource["alarm_clock_name"] as! String)
             
-            let dateString = (dataSource["alarm_clock_start_date"] as! String)+" "+(dataSource["alarm_clock_time"] as! String)
+            let dateString = dataSource["alarm_clock_time"] as! String
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let date = formatter.date(from: dateString)
