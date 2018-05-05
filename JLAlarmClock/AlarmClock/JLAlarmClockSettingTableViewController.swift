@@ -11,19 +11,19 @@ import PGDatePicker
 
 class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePickerDelegate,JLRepeatDelegate,JLInputTitleDelegate {
     
-    var dataSource: Dictionary<String, Any>!
+    var alarmClockDict: Dictionary<String, Any>!
     
     var datePicker: PGDatePicker = PGDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: 260))
     var datePickerManager: PGDatePickManager!
     var dateComponents: DateComponents = Calendar.current.dateComponents([.year,.month,.weekday,.weekdayOrdinal,.day,.hour,.minute,.second], from: Date())
     var weekdaySelect: JLWeekdaySelect = JLWeekdaySelect()
-    var repeatUnit: JLRepeatUnit = .None
+    var repeatInterval: JLRepeatInterval = .None
     var rowTitles: [String] = ["","闹钟标题","开始日期","响铃周期","铃声选择","更多设置"]
     var rowValue: [String:String] = [:]
     
     private func setupDatePicker() {
         datePicker.delegate = self
-        datePicker.datePickerMode = .timeAndSecond
+        datePicker.datePickerMode = .time
         datePicker.datePickerType = .type2
         datePicker.autoSelected = true
     }
@@ -53,7 +53,7 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
         let controller = JLAlarmClockRepeatTableViewController()
         controller.delegate = self
         controller.weekdaySelect = weekdaySelect
-        controller.repeatUnit = repeatUnit
+        controller.repeatInterval = repeatInterval
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -75,19 +75,19 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
                 "alarm_clock_content": "",
                 "alarm_clock_time": time,
                 "alarm_clock_repeats_number": 1,
-                "alarm_clock_repeats_unit": repeatUnit.rawValue,
+                "alarm_clock_repeats_interval": repeatInterval.rawValue,
                 "alarm_clock_repeats_weekday": weekdaySelect.string,
                 "alarm_clock_state": 1,
                 "user_id": 0,
                 "alarm_clock_delete_flag": 0]
-            if dataSource == nil {
+            if alarmClockDict == nil {
                 sqlMgr.insert(tbName: "alarm_clock_info_table", data: data, block: { (error) in
                     if error != nil {
                         log((error?.errmsg)!)
                     }
                 })
             }else {
-                sqlMgr.update(tbName: "alarm_clock_info_table", data: data, rowWhere: "alarm_clock_id = "+String(dataSource["alarm_clock_id"] as! Int), block: { (error) in
+                sqlMgr.update(tbName: "alarm_clock_info_table", data: data, rowWhere: "alarm_clock_id = "+String(alarmClockDict["alarm_clock_id"] as! Int), block: { (error) in
                     if error != nil {
                         log((error?.errmsg)!)
                     }
@@ -129,7 +129,7 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
         setupDatePicker()
         setupDatePickManager()
         
-        if dataSource == nil {
+        if alarmClockDict == nil {
             self.title = "添加闹钟"
             
             rowValue["闹钟标题"] = "起床闹钟"
@@ -138,9 +138,9 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
         }else {
             self.title = "设置闹钟"
             
-            rowValue["闹钟标题"] = (dataSource["alarm_clock_name"] as! String)
+            rowValue["闹钟标题"] = (alarmClockDict["alarm_clock_name"] as! String)
             
-            let dateString = dataSource["alarm_clock_time"] as! String
+            let dateString = alarmClockDict["alarm_clock_time"] as! String
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let date = formatter.date(from: dateString)
@@ -150,9 +150,9 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
             datePickerManager.datePicker.setDate(date)
             rowValue["开始日期"] = "\(components.year!)年\(components.month!)月\(components.day!)日"
             
-            repeatUnit = JLRepeatUnit(rawValue: dataSource["alarm_clock_repeats_unit"] as! Int)!
-            weekdaySelect.string = (dataSource["alarm_clock_repeats_weekday"] as! String)
-            rowValue["响铃周期"] = repeatsName(repeatUnit: repeatUnit, weekdaySelect: weekdaySelect)
+            repeatInterval = JLRepeatInterval(rawValue: alarmClockDict["alarm_clock_repeats_interval"] as! Int)!
+            weekdaySelect.string = (alarmClockDict["alarm_clock_repeats_weekday"] as! String)
+            rowValue["响铃周期"] = repeatsName(repeatInterval: repeatInterval, weekdaySelect: weekdaySelect)
         }
 
         self.tableView.delegate = self
@@ -219,13 +219,13 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
         }
     }
     
-    private func repeatsName(repeatUnit: JLRepeatUnit, weekdaySelect: JLWeekdaySelect!) -> String {
-        switch repeatUnit {
+    private func repeatsName(repeatInterval: JLRepeatInterval, weekdaySelect: JLWeekdaySelect!) -> String {
+        switch repeatInterval {
         case .None:
             return "只响一次"
-        case .EveryDay:
+        case .Day:
             return "每天"
-        case .EveryWeek:
+        case .Weekday:
             if weekdaySelect.isSun == false && weekdaySelect.isMon == true && weekdaySelect.isTue == true && weekdaySelect.isWed == true && weekdaySelect.isThu == true && weekdaySelect.isFri == true && weekdaySelect.isSat == false {
                 return "每周 工作日"
             }else {
@@ -253,10 +253,12 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
                 }
                 return dateString
             }
-        case .EveryMonth:
+        case .Month:
             return "每月"
-        case .EveryYear:
+        case .Year:
             return "每年"
+        case .Hour:
+            return "每小时"
         }
     }
     
@@ -309,12 +311,12 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
     }
 
     // MARK: - JLRepeatDelegate
-    func didSelectRepeat(repeatUnit: JLRepeatUnit, weekdaySelect: JLWeekdaySelect!) {
+    func didSelectRepeat(repeatInterval: JLRepeatInterval, weekdaySelect: JLWeekdaySelect!, repeatNumber: Int) {
         
-        self.repeatUnit = repeatUnit
+        self.repeatInterval = repeatInterval
         self.weekdaySelect = weekdaySelect
         
-        rowValue["响铃周期"] = repeatsName(repeatUnit: repeatUnit, weekdaySelect: weekdaySelect)
+        rowValue["响铃周期"] = repeatsName(repeatInterval: repeatInterval, weekdaySelect: weekdaySelect)
         
         self.tableView.reloadData()
     }

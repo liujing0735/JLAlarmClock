@@ -9,15 +9,13 @@
 import UIKit
 import UserNotifications
 
-enum JLRepeatInterval {
-    case None
+enum JLRepeatInterval: Int {
+    case None = 0
     case Year
     case Month
     case Weekday
     case Day
     case Hour
-    case Minute
-    case Second
 }
 
 enum JLWeekday: Int {
@@ -100,17 +98,6 @@ class JLLocalNotificationManager: NSObject,UNUserNotificationCenterDelegate {
             components.second = fireComponents.second
             let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true);
             return trigger
-        case .Minute:
-            
-            var components = DateComponents()
-            components.second = fireComponents.second
-            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true);
-            return trigger
-        case .Second:
-            
-            let timeInterval = 60.0
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: true)
-            return trigger
         }
     }
     
@@ -128,10 +115,6 @@ class JLLocalNotificationManager: NSObject,UNUserNotificationCenterDelegate {
             return .day
         case .Hour:
             return .hour
-        case .Minute:
-            return .minute
-        case .Second:
-            return .second
         }
     }
     

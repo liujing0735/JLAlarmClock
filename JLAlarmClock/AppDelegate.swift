@@ -182,7 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 "alarm_clock_content": .Text,
                 "alarm_clock_time": .Real,
                 "alarm_clock_repeats_number": .Integer,
-                "alarm_clock_repeats_unit": .Integer,
+                "alarm_clock_repeats_interval": .Integer,
                 "alarm_clock_repeats_weekday": .Text,
                 "alarm_clock_state": .Integer,
                 "alarm_clock_delete_flag": .Integer,

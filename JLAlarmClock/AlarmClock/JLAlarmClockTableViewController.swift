@@ -36,9 +36,7 @@ class JLAlarmClockTableViewController: JLBaseTableViewController,JLAlarmClockTab
         }
         
         let acMgr = JLAlarmClockManager.shared
-        for dict in alarmClocks {
-            acMgr.configAlarmClock(dict: dict)
-        }
+        acMgr.configAlarmClocks(dicts: alarmClocks)
     }
 
     override func viewDidLoad() {
@@ -92,7 +90,7 @@ class JLAlarmClockTableViewController: JLBaseTableViewController,JLAlarmClockTab
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let setting = JLAlarmClockSettingTableViewController()
-        setting.dataSource = alarmClocks[indexPath.row]
+        setting.alarmClockDict = alarmClocks[indexPath.row]
         self.navigationController?.pushViewController(setting, animated: true)
     }
 

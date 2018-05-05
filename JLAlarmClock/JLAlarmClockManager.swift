@@ -18,6 +18,12 @@ class JLAlarmClockManager: NSObject {
         super.init()
     }
     
+    func configAlarmClocks(dicts: [Dictionary<String, Any>]) {
+        for dict in dicts {
+            configAlarmClock(dict: dict)
+        }
+    }
+    
     func configAlarmClock(dict: Dictionary<String, Any>) {
         let state = dict.boolForKey(key: "alarm_clock_state")
         if state {
@@ -28,90 +34,46 @@ class JLAlarmClockManager: NSObject {
     }
     
     func addAlarmClock(dict: Dictionary<String, Any>) {
-        let repeatsUnit: JLRepeatUnit = JLRepeatUnit(rawValue: dict.intForKey(key: "alarm_clock_repeats_unit"))!
-        switch repeatsUnit {
-        case .None:
-            self.addAlarmClockOnlyRangOnce(dict: dict)
-            break
-        case .EveryYear:
-            self.addAlarmClockEveryYear(dict: dict)
-            break
-        case .EveryMonth:
-            self.addAlarmClockEveryMonth(dict: dict)
-            break
-        case .EveryWeek:
-            self.addAlarmClockEveryWeek(dict: dict)
-            break
-        case .EveryDay:
-            self.addAlarmClockEveryDay(dict: dict)
-            break
-        }
-    }
-    
-    func addAlarmClockOnlyRangOnce(dict: Dictionary<String, Any>) {
-        let title = dict.stringForKey(key: "alarm_clock_name")
-        let date = dict.dateForKey(key: "alarm_clock_time")
-        let identifier = self.identifier(dict: dict)
-        
-        let localNotMgr = JLLocalNotificationManager.shared
-        localNotMgr.registerLocalNotification()
-        localNotMgr.addLocalNotification(fireDate: date, identifier: identifier, alertTitle: title, repeatInterval: .None)
-    }
-    
-    func addAlarmClockEveryDay(dict: Dictionary<String, Any>) {
-        let title = dict.stringForKey(key: "alarm_clock_name")
-        let date = dict.dateForKey(key: "alarm_clock_time")
-        let identifier = self.identifier(dict: dict)
-        
-        let localNotMgr = JLLocalNotificationManager.shared
-        localNotMgr.registerLocalNotification()
-        localNotMgr.addLocalNotification(fireDate: date, identifier: identifier, alertTitle: title, repeatInterval: .Day)
-    }
-    
-    func addAlarmClockEveryWeek(dict: Dictionary<String, Any>) {
         let localNotMgr = JLLocalNotificationManager.shared
         localNotMgr.registerLocalNotification()
         
         let title = dict.stringForKey(key: "alarm_clock_name")
         let date = dict.dateForKey(key: "alarm_clock_time")
         let identifier = self.identifier(dict: dict)
-        
-        let dates = sevenDaysOfThisWeek(date: date)
-        let repeatsWeekday: String = dict["alarm_clock_repeats_weekday"] as! String
-        let weekdays = repeatsWeekday.strings()
-        for index in 0..<weekdays.count {
-            self.removeAlarmClock(identifier: identifier+String(format: "%d", index))
-            if weekdays[index] == "1" {
-                localNotMgr.addLocalNotification(fireDate: dates[index], identifier: identifier+String(format: "%d", index), alertTitle: title, repeatInterval: .Weekday)
+        let repeatInterval = JLRepeatInterval(rawValue: dict.intForKey(key: "alarm_clock_repeats_interval"))!
+        let repeatsNumber: Int = dict.intForKey(key: "alarm_clock_repeats_number")
+        if repeatsNumber > 1 {
+            
+        }else {
+            switch repeatInterval {
+            case .None,.Year,.Month,.Day,.Hour:
+                do {
+                    localNotMgr.addLocalNotification(fireDate: date, identifier: identifier, alertTitle: title, repeatInterval: repeatInterval)
+                }
+                break
+            case .Weekday:
+                do {
+                    let dates = sevenDaysOfThisWeek(date: date)
+                    let repeatsWeekday: String = dict["alarm_clock_repeats_weekday"] as! String
+                    let weekdays = repeatsWeekday.strings()
+                    for index in 0..<weekdays.count {
+                        // 兼容闹钟变更的情况
+                        self.removeAlarmClock(identifier: identifier+String(format: "%d", index))
+                        if weekdays[index] == "1" {
+                            localNotMgr.addLocalNotification(fireDate: dates[index], identifier: identifier+String(format: "%d", index), alertTitle: title, repeatInterval: .Weekday)
+                        }
+                    }
+                }
+                break
             }
         }
-    }
-    
-    func addAlarmClockEveryMonth(dict: Dictionary<String, Any>) {
-        let title = dict.stringForKey(key: "alarm_clock_name")
-        let date = dict.dateForKey(key: "alarm_clock_time")
-        let identifier = self.identifier(dict: dict)
-        
-        let localNotMgr = JLLocalNotificationManager.shared
-        localNotMgr.registerLocalNotification()
-        localNotMgr.addLocalNotification(fireDate: date, identifier: identifier, alertTitle: title, repeatInterval: .Month)
-    }
-    
-    func addAlarmClockEveryYear(dict: Dictionary<String, Any>) {
-        let title = dict.stringForKey(key: "alarm_clock_name")
-        let date = dict.dateForKey(key: "alarm_clock_time")
-        let identifier = self.identifier(dict: dict)
-        
-        let localNotMgr = JLLocalNotificationManager.shared
-        localNotMgr.registerLocalNotification()
-        localNotMgr.addLocalNotification(fireDate: date, identifier: identifier, alertTitle: title, repeatInterval: .Year)
     }
     
     func removeAlarmClock(dict: Dictionary<String, Any>) {
         let identifier = self.identifier(dict: dict)
         
-        let repeatsUnit: JLRepeatUnit = JLRepeatUnit(rawValue: dict.intForKey(key: "alarm_clock_repeats_unit"))!
-        if repeatsUnit == .EveryWeek {
+        let repeatInterval: JLRepeatInterval = JLRepeatInterval(rawValue: dict.intForKey(key: "alarm_clock_repeats_interval"))!
+        if repeatInterval == .Weekday {
             let repeatsWeekday = dict.stringForKey(key: "alarm_clock_repeats_weekday")
             let weekdays = repeatsWeekday.strings()
             for index in 0..<weekdays.count {
