@@ -18,6 +18,15 @@ class JLAlarmClockManager: NSObject {
         super.init()
     }
     
+    func configAlarmClock(dict: Dictionary<String, Any>) {
+        let state = dict.boolForKey(key: "alarm_clock_state")
+        if state {
+            addAlarmClock(dict: dict)
+        }else {
+            removeAlarmClock(dict: dict)
+        }
+    }
+    
     func addAlarmClock(dict: Dictionary<String, Any>) {
         let repeatsUnit: JLRepeatUnit = JLRepeatUnit(rawValue: dict.intForKey(key: "alarm_clock_repeats_unit"))!
         switch repeatsUnit {

@@ -162,4 +162,17 @@ extension Dictionary {
         }
         return 0
     }
+    
+    func boolForKey(key: String) -> Bool {
+        let value = anyForKey(key: key)
+        if value != nil {
+            if value is Int {
+                return Bool(exactly: value as! NSNumber)!
+            }
+            if value is Bool {
+                return value as! Bool
+            }
+        }
+        return false
+    }
 }

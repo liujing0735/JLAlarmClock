@@ -8,12 +8,18 @@
 
 import UIKit
 
-enum AlarmClock {
+protocol JLAlarmClockTableViewCellDelegate {
+    func didClickSwitch(sender: UISwitch)
+}
+
+enum JLAlarmClock {
     case alarm_icon_getup
     case alarm_icon_birthday
 }
 
 class JLAlarmClockTableViewCell: UITableViewCell {
+    
+    var delegate: JLAlarmClockTableViewCellDelegate!
     
     private let timeLabel = UILabel()
     private let titleLabel = UILabel()
@@ -28,6 +34,10 @@ class JLAlarmClockTableViewCell: UITableViewCell {
         titleLabel.text = dict["alarm_clock_name"] as? String
         detailLabel.text = timeString.components(separatedBy: " ")[0]
         alarmClockSwitch.isOn = Bool(exactly: dict["alarm_clock_state"] as! NSNumber)!
+    }
+    
+    @objc func clickSwitch(sender: UISwitch) {
+        delegate.didClickSwitch(sender: sender)
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -49,6 +59,7 @@ class JLAlarmClockTableViewCell: UITableViewCell {
         self.addSubview(detailLabel)
 
         alarmClockSwitch.frame = CGRect(x: UIScreen.main.bounds.width-51-10, y: (60-31)/2, width: 51, height: 31)
+        alarmClockSwitch.addTarget(self, action: #selector(clickSwitch(sender:)), for: .valueChanged)
         self.addSubview(alarmClockSwitch)
         
         singleLine.frame = CGRect(x: 0, y: 60-0.2, width: UIScreen.main.bounds.width, height: 0.2)

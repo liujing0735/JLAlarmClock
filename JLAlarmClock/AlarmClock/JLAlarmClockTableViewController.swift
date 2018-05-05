@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JLAlarmClockTableViewController: JLBaseTableViewController {
+class JLAlarmClockTableViewController: JLBaseTableViewController,JLAlarmClockTableViewCellDelegate {
     
     var alarmClocks: [Dictionary<String, Any>] = []
     
@@ -19,6 +19,26 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
     override func rightItemClick(sender: Any) {
         let controller = JLAlarmClockSettingTableViewController()
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func reloadData() {
+        let sqlMgr = JLSQLiteManager.shared
+        if sqlMgr.open() {
+            sqlMgr.select(tbName: "alarm_clock_info_table", rowWhere: "alarm_clock_delete_flag = 0", block: { (dicts, error) in
+                if error != nil {
+                    log((error?.errmsg)!)
+                }else {
+                    alarmClocks = dicts
+                    self.tableView.reloadData()
+                }
+            })
+            sqlMgr.close()
+        }
+        
+        let acMgr = JLAlarmClockManager.shared
+        for dict in alarmClocks {
+            acMgr.configAlarmClock(dict: dict)
+        }
     }
 
     override func viewDidLoad() {
@@ -35,24 +55,8 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let sqlMgr = JLSQLiteManager.shared
-        if sqlMgr.open() {
-            sqlMgr.select(tbName: "alarm_clock_info_table", rowWhere: "alarm_clock_delete_flag = 0", block: { (dicts, error) in
-                if error != nil {
-                    log((error?.errmsg)!)
-                }else {
-                    alarmClocks = dicts
-                    self.tableView.reloadData()
-                }
-            })
-            sqlMgr.close()
-        }
-        
-        let acMgr = JLAlarmClockManager.shared
-        for dict in alarmClocks {
-            acMgr.addAlarmClock(dict: dict)
-        }
+
+        reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,11 +81,11 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! JLAlarmClockTableViewCell
-
+        
         // Configure the cell...
         let dict = alarmClocks[indexPath.row]
         cell.reloadData(dict: dict)
-
+        cell.delegate = self
         return cell
     }
     
@@ -110,7 +114,6 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
             // 更新数据库
             let sqlMgr = JLSQLiteManager.shared
             if sqlMgr.open() {
-                
                 let id: String = "\(dict["alarm_clock_id"] as! Int)"
                 let data: [String: Any] = ["alarm_clock_delete_flag": 1]
                 sqlMgr.update(tbName: "alarm_clock_info_table", data: data, rowWhere: "alarm_clock_id = \(id)", block: { (error) in
@@ -118,6 +121,7 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
                         log((error?.errmsg)!)
                     }
                 })
+                sqlMgr.close()
             }
             // 移除本地推送
             let acMgr = JLAlarmClockManager.shared
@@ -127,6 +131,28 @@ class JLAlarmClockTableViewController: JLBaseTableViewController {
             // 刷新页面数据
             self.tableView.reloadData()
         }
+    }
+    
+    // MARK: - JLAlarmClockTableViewCellDelegate {
+    func didClickSwitch(sender: UISwitch) {
+        let cell = sender.superview as! JLAlarmClockTableViewCell
+        let indexPath = self.tableView.indexPath(for: cell)
+        let dict = alarmClocks[(indexPath?.row)!]
+        
+        // 更新数据库
+        let sqlMgr = JLSQLiteManager.shared
+        if sqlMgr.open() {
+            let id: String = dict.stringForKey(key: "alarm_clock_id")
+            let data: [String: Any] = ["alarm_clock_state": (sender.isOn ? 1 : 0)]
+            sqlMgr.update(tbName: "alarm_clock_info_table", data: data, rowWhere: "alarm_clock_id = \(id)", block: { (error) in
+                if error != nil {
+                    log((error?.errmsg)!)
+                }
+            })
+            sqlMgr.close()
+        }
+        
+        reloadData()
     }
 
     /*
