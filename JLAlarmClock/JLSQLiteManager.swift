@@ -80,19 +80,19 @@ struct JLSQLiteError {
         }
     }
 }
-
+// 查询排序
 enum JLSQLiteOrder: String {
     case Asc = "asc"    // 升序
     case Desc = "desc"  // 降序
 }
-
+// 数据类型
 enum JLSQLiteDataType: String {
     case Integer = "integer" // int
     case Real = "real" // float double
     case Text = "text" // char
     case Blob = "blob" // 二进制
 }
-
+// 约束
 enum JLSQLiteConstraint: String {
     case Default = "default"
     case NotNull = "not null"       // 非空

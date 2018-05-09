@@ -43,7 +43,40 @@ class JLAlarmClockManager: NSObject {
         let repeatInterval = JLRepeatInterval(rawValue: dict.intForKey(key: "alarm_clock_repeats_interval"))!
         let repeatsNumber: Int = dict.intForKey(key: "alarm_clock_repeats_number")
         if repeatsNumber > 1 {
-            
+            switch repeatInterval {
+            case .None:
+                break
+            case .Year:
+                do {
+                    for i in 0...1 {// 至少4年
+                        localNotMgr.addLocalNotification(fireDate: self.calculateDate(date: date, year: i*repeatsNumber), identifier: identifier+"\(i)", alertTitle: title, repeatInterval: .None)
+                    }
+                }
+                break
+            case .Month:
+                do {
+                    for i in 0...5 {// 至少12个月
+                        localNotMgr.addLocalNotification(fireDate: self.calculateDate(date: date, month: i*repeatsNumber), identifier: identifier+"\(i)", alertTitle: title, repeatInterval: .None)
+                    }
+                }
+                break
+            case .Weekday:
+                do {
+                    for i in 0...11 {// 至少6个月
+                        localNotMgr.addLocalNotification(fireDate: self.calculateDate(date: date, day: i*repeatsNumber*7), identifier: identifier+"\(i)", alertTitle: title, repeatInterval: .None)
+                    }
+                }
+                break
+            case .Day:
+                do {
+                    for i in 0...23 {// 至少48天
+                        localNotMgr.addLocalNotification(fireDate: self.calculateDate(date: date, day: i*repeatsNumber), identifier: identifier+"\(i)", alertTitle: title, repeatInterval: .None)
+                    }
+                }
+                break
+            case .Hour:
+                break
+            }
         }else {
             switch repeatInterval {
             case .None,.Year,.Month,.Day,.Hour:
@@ -146,5 +179,31 @@ class JLAlarmClockManager: NSObject {
             dates.remove(at: 6)// 移除周六
         }
         return dates
+    }
+    
+    
+    /// 推算日期
+    ///
+    /// - Parameters:
+    ///   - date: 初始日期
+    ///   - year: -1 距离初始日期1年前，1 距离初始日期1年后
+    ///   - month: -1 距离初始日期1月前，1 距离初始日期1月后
+    ///   - day: -1 距离初始日期1天前，1 距离初始日期1天后
+    ///   - hour: -1 距离初始日期1小时前，1 距离初始日期1小时后
+    ///   - minute: -1 距离初始日期1分钟前，1 距离初始日期1分钟后
+    ///   - second: -1 距离初始日期1秒钟前，1 距离初始日期1秒钟后
+    /// - Returns: 距离初始日期指定时间的新日期
+    func calculateDate(date: Date = Date(), year: Int = 0, month: Int = 0, day: Int = 0, hour: Int = 0, minute: Int = 0, second: Int = 0) -> Date {
+        
+        let calendar: Calendar = Calendar.current
+        var components: DateComponents = DateComponents()
+        components.year = year
+        components.month = month
+        components.day = day
+        components.hour = hour
+        components.minute = minute
+        components.second = second
+        
+        return calendar.date(byAdding: components, to: date)!
     }
 }
