@@ -188,7 +188,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 "alarm_clock_delete_flag": .Integer,
                 "user_id": .Integer,
                 "update_time": .Real]
-            let constraint: [String: [JLSQLiteConstraint]] = ["alarm_clock_id": [.AutoPrimaryKey], "alarm_clock_info_table,user_id": [.ForeignKey]]
+            let constraint: [String: [JLSQLiteConstraint]] = [
+                "alarm_clock_id": [.AutoPrimaryKey],
+                "alarm_clock_info_table,user_id": [.ForeignKey],
+                "update_time": [.DefaultUpdateTimestamp]]
             sqlMgr.createTable(tbName: "alarm_clock_info_table", tbColumn: column, tbConstraint: constraint) { (error) in
                 
                 if error != nil {
