@@ -13,6 +13,7 @@
 		2270E8E91F301CD300979959 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2270E8E71F301CD200979959 /* LaunchScreen.storyboard */; };
 		2270E8F41F301CD300979959 /* JLAlarmClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8F31F301CD300979959 /* JLAlarmClockTests.swift */; };
 		2270E8FF1F301CD300979959 /* JLAlarmClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8FE1F301CD300979959 /* JLAlarmClockUITests.swift */; };
+		2273A80220A5E4D8002F3703 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 2273A80120A5E4D7002F3703 /* launch.png */; };
 		228024272025617E00AF9CD8 /* JLBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228024262025617E00AF9CD8 /* JLBaseViewController.swift */; };
 		22802429202561BD00AF9CD8 /* JLBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22802428202561BD00AF9CD8 /* JLBaseTableViewController.swift */; };
 		2280242B202561E700AF9CD8 /* JLBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2280242A202561E700AF9CD8 /* JLBaseTabBarController.swift */; };
@@ -61,6 +62,7 @@
 		2270E8FA1F301CD300979959 /* JLAlarmClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLAlarmClockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2270E8FE1F301CD300979959 /* JLAlarmClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockUITests.swift; sourceTree = "<group>"; };
 		2270E9001F301CD300979959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2273A80120A5E4D7002F3703 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launch.png; path = ../../../../../Users/JasonLiu/Downloads/launch.png; sourceTree = "<group>"; };
 		228024262025617E00AF9CD8 /* JLBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBaseViewController.swift; sourceTree = "<group>"; };
 		22802428202561BD00AF9CD8 /* JLBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBaseTableViewController.swift; sourceTree = "<group>"; };
 		2280242A202561E700AF9CD8 /* JLBaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBaseTabBarController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				22BBAA8B1F42967C00242E50 /* AlarmClock */,
 				22BBAA8F1F42967C00242E50 /* Calendar */,
 				2270E8E51F301CD200979959 /* Assets.xcassets */,
+				2273A80120A5E4D7002F3703 /* launch.png */,
 				2270E8E71F301CD200979959 /* LaunchScreen.storyboard */,
 				2270E8EA1F301CD300979959 /* Info.plist */,
 				22BBAA951F42E0BA00242E50 /* JLAlarmClock-Bridging-Header.h */,
@@ -336,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2273A80220A5E4D8002F3703 /* launch.png in Resources */,
 				2270E8E91F301CD300979959 /* LaunchScreen.storyboard in Resources */,
 				22960B56209C98BC00960C8B /* InfoPlist.strings in Resources */,
 				2270E8E61F301CD200979959 /* Assets.xcassets in Resources */,
@@ -611,7 +615,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4835C135DC0FB60060F0B5EF /* Pods-JLAlarmClock.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_male;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 9B3R8UT3R5;
 				INFOPLIST_FILE = JLAlarmClock/Info.plist;
@@ -630,7 +634,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CE764E10CECF6EF14E2E3EA7 /* Pods-JLAlarmClock.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_male;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 9B3R8UT3R5;
 				INFOPLIST_FILE = JLAlarmClock/Info.plist;
