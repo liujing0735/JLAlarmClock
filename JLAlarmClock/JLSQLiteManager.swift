@@ -80,27 +80,32 @@ struct JLSQLiteError {
         }
     }
 }
-
+// 查询排序
 enum JLSQLiteOrder: String {
     case Asc = "asc"    // 升序
     case Desc = "desc"  // 降序
 }
-
+// 数据类型
 enum JLSQLiteDataType: String {
     case Integer = "integer" // int
     case Real = "real" // float double
     case Text = "text" // char
     case Blob = "blob" // 二进制
 }
-
+// 约束
 enum JLSQLiteConstraint: String {
-    case Default = "default"
     case NotNull = "not null"       // 非空
     case Unique = "unique"          // 唯一
+    case NotNullUnique = "not null unique"// 非空且唯一
     case PrimaryKey = "primary key" // 主键
-    case AutoPrimaryKey = "primary key autoincrement"   // 自增主键
+    case AutoPrimaryKey = "primary key autoincrement"// 自增主键
     case ForeignKey = "foreign key" // 外键
     case Check = "check"            // 检查，确保列中的所有值均满足条件
+    case DefaultInt0 = "default 0"  // 默认整型 0
+    case DefaultInt1 = "default 1"  // 默认整型 1
+    case DefaultString = "default '0000000'"  // 默认字符 '0000000'
+    case DefaultTimestamp = "default current_timestamp"// 默认当前时间
+    case DefaultUpdateTimestamp = "default current_timestamp on update current_timestamp"// 更新当前时间
 }
 
 class JLSQLiteManager: NSObject {
