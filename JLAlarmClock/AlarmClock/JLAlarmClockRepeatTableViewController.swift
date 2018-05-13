@@ -329,7 +329,13 @@ class JLAlarmClockRepeatTableViewController: JLBaseTableViewController {
             }
             break
         default:
-            
+            if select {
+                let view = JLAlarmClockRepeatCustomView(frame: CGRect(x: 0, y: navigationBarHeight, width: screenWidth, height: screenHeight-navigationBarHeight))
+                self.view.addSubview(view)
+            }else {
+                repeatInterval = .None
+                repeatNumber = 1
+            }
             break
         }
         self.tableView.reloadData()

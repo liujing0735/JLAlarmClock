@@ -136,7 +136,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 "db_version_id": .Integer,
                 "db_version_number": .Real,
                 "update_time": .Real]
-            let constraint: [String: [JLSQLiteConstraint]] = ["db_version_id": [.AutoPrimaryKey]]
+            let constraint: [String: [JLSQLiteConstraint]] = [
+                "db_version_id": [.AutoPrimaryKey],
+                "update_time": [.DefaultTimestamp]]
             sqlMgr.createTable(tbName: "db_version_table", tbColumn: column, tbConstraint: constraint) { (error) in
                 
                 if error != nil {
@@ -162,7 +164,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 "user_level": .Integer,
                 "user_vip": .Integer,
                 "update_time": .Real]
-            let constraint: [String: [JLSQLiteConstraint]] = ["user_id": [.AutoPrimaryKey]]
+            let constraint: [String: [JLSQLiteConstraint]] = [
+                "user_id": [.AutoPrimaryKey],
+                "update_time": [.DefaultTimestamp]]
             sqlMgr.createTable(tbName: "user_info_table", tbColumn: column, tbConstraint: constraint) { (error) in
                 
                 if error != nil {
@@ -191,7 +195,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let constraint: [String: [JLSQLiteConstraint]] = [
                 "alarm_clock_id": [.AutoPrimaryKey],
                 "alarm_clock_info_table,user_id": [.ForeignKey],
-                "update_time": [.DefaultUpdateTimestamp]]
+                "update_time": [.DefaultTimestamp]]
             sqlMgr.createTable(tbName: "alarm_clock_info_table", tbColumn: column, tbConstraint: constraint) { (error) in
                 
                 if error != nil {

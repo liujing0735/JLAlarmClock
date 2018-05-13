@@ -13,7 +13,7 @@ class JLAlarmClockSettingTableViewController: JLBaseTableViewController,PGDatePi
     
     var alarmClockDict: Dictionary<String, Any>!
     
-    var datePicker: PGDatePicker = PGDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: 260))
+    var datePicker: PGDatePicker = PGDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 260))
     var datePickerManager: PGDatePickManager!
     var dateComponents: DateComponents = Calendar.current.dateComponents([.year,.month,.weekday,.weekdayOrdinal,.day,.hour,.minute,.second], from: Date())
     var weekdaySelect: JLWeekdaySelect = JLWeekdaySelect()

@@ -31,6 +31,29 @@ class JLBaseViewController: UIViewController,JLBaseDelegate {
     }
     var _title: String!
     
+    var navigationBarWidth: CGFloat {
+        get {
+            if baseNavigationBar != nil {
+                return baseNavigationBar.frame.width
+            }
+            return 0
+        }
+    }
+    
+    var navigationBarHeight: CGFloat {
+        get {
+            if baseNavigationBar != nil {
+                if #available(iOS 11.0, *) {
+                    if isIPhoneX() {
+                        return 44 + 44
+                    }
+                }
+                return 20 + 44
+            }
+            return 0
+        }
+    }
+    
     private func updateViewFrame() {
         if #available(iOS 11.0, *) {
             let top = self.view.safeAreaInsets.top
@@ -38,15 +61,15 @@ class JLBaseViewController: UIViewController,JLBaseDelegate {
             let right = self.view.safeAreaInsets.right
             
             if isIPhoneX() {
-                self.statusBarView.frame = CGRect(x: left, y: 0, width: screenWidth() - left - right, height: 44)
-                self.baseNavigationBar.frame = CGRect(x: left, y: 44 + top, width: screenWidth() - left - right, height: 44)
+                self.statusBarView.frame = CGRect(x: left, y: 0, width: screenWidth - left - right, height: 44 + top)
+                self.baseNavigationBar.frame = CGRect(x: left, y: 44 + top, width: screenWidth - left - right, height: 44)
             }else {
-                self.statusBarView.frame = CGRect(x: left, y: 0, width: screenWidth() - left - right, height: 20)
-                self.baseNavigationBar.frame = CGRect(x: left, y: 20 + top, width: screenWidth() - left - right, height: 44)
+                self.statusBarView.frame = CGRect(x: left, y: 0, width: screenWidth - left - right, height: 20 + top)
+                self.baseNavigationBar.frame = CGRect(x: left, y: 20 + top, width: screenWidth - left - right, height: 44)
             }
         }else {
-            self.statusBarView.frame = CGRect(x: 0, y: 0, width: screenWidth(), height: 20)
-            self.baseNavigationBar.frame = CGRect(x: 0, y: 20, width: screenWidth(), height: 44)
+            self.statusBarView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 20)
+            self.baseNavigationBar.frame = CGRect(x: 0, y: 20, width: screenWidth, height: 44)
         }
     }
 

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "33C1C92B1A21D4CA1699591AB30DDC6C"
+               BlueprintIdentifier = "1CF96E5B744BA5721327C565CD692B83"
                BuildableName = "Pods_JLAlarmClock.framework"
                BlueprintName = "Pods-JLAlarmClock"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "33C1C92B1A21D4CA1699591AB30DDC6C"
+            BlueprintIdentifier = "1CF96E5B744BA5721327C565CD692B83"
             BuildableName = "Pods_JLAlarmClock.framework"
             BlueprintName = "Pods-JLAlarmClock"
             ReferencedContainer = "container:Pods.xcodeproj">
