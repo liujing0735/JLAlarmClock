@@ -105,7 +105,6 @@ enum JLSQLiteConstraint: String {
     case DefaultInt1 = "default 1"  // 默认整型 1
     case DefaultString = "default '0000000'"  // 默认字符 '0000000'
     case DefaultTimestamp = "default current_timestamp"// 默认当前时间
-    case DefaultUpdateTimestamp = "default current_timestamp on update current_timestamp"// 更新当前时间
 }
 
 class JLSQLiteManager: NSObject {
@@ -206,12 +205,13 @@ class JLSQLiteManager: NSObject {
                         columnString.append(", \(constraint.rawValue)(\(column))")
                     }
                     if constraint == .ForeignKey {
-                        columnString.append(", \(constraint.rawValue)(\(columns[1])) references \(columns[0])(\(columns[1]))")
+                        columnString.append(", \(constraint.rawValue) (\(columns[1])) references \(columns[0])(\(columns[1]))")
                     }
                 }
             }
         }
         let sql = "create table \(tbName)(\(columnString))"
+        log("创建表：\(sql)")
         execSQL(sql: sql) { (error) in
             block(error)
         }

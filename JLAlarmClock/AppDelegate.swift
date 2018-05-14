@@ -191,7 +191,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let constraint: [String: [JLSQLiteConstraint]] = [
                 "alarm_clock_id": [.AutoPrimaryKey],
                 "alarm_clock_info_table,user_id": [.ForeignKey],
-                "update_time": [.DefaultUpdateTimestamp]]
+                "update_time": [.DefaultTimestamp]]
             sqlMgr.createTable(tbName: "alarm_clock_info_table", tbColumn: column, tbConstraint: constraint) { (error) in
                 
                 if error != nil {
