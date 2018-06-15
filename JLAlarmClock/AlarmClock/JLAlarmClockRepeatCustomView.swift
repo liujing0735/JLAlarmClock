@@ -10,6 +10,14 @@ import UIKit
 import PGPickerView
 import HMSegmentedControl
 
+enum PickerViewTag: Int {
+    case TagHour = 0
+    case TagDay
+    case TagWeeks
+    case TagMonth
+    case TagYear
+}
+
 class JLAlarmClockRepeatCustomView: UIView,PGPickerViewDelegate,PGPickerViewDataSource {
     
     var delegate: JLRepeatDelegate!
@@ -22,9 +30,11 @@ class JLAlarmClockRepeatCustomView: UIView,PGPickerViewDelegate,PGPickerViewData
     var backgroudLabel: UILabel!
     
     var foregroundView: UIView!
-    var pickerView: PGPickerView!
+    var pickerView = PGPickerView()
+    var pickerViews: [PGPickerView] = []
     var segmentedControl: HMSegmentedControl!
     
+    // custom view data source
     var segmentIndex: Int = 0
     let repeatTitles: [String] = ["时","天","周","月","年"]
     let repeatIntervals: [JLRepeatInterval] = [.Hour,.Day,.Weekday,.Month,.Year]
@@ -36,7 +46,19 @@ class JLAlarmClockRepeatCustomView: UIView,PGPickerViewDelegate,PGPickerViewData
     
     @objc func segmentedControlChangedValue(segmentedControl: HMSegmentedControl) {
         segmentIndex = segmentedControl.selectedSegmentIndex
-        pickerView.reloadAllComponents()
+        pickerView.removeFromSuperview()
+        pickerView = pickerViews[segmentIndex]
+        foregroundView.addSubview(pickerView)
+    }
+    
+    func setupPGPickerView(tag: Int) -> PGPickerView {
+        let pickerView = PGPickerView(frame: CGRect(x: 0, y: 0, width: frame.width, height: 260))
+        pickerView.tag = tag
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.type = .type1
+        pickerView.isHiddenMiddleText = false
+        return pickerView
     }
     
     override init(frame: CGRect) {
@@ -46,6 +68,8 @@ class JLAlarmClockRepeatCustomView: UIView,PGPickerViewDelegate,PGPickerViewData
         backgroudView.backgroundColor = rgba(r: 0, g: 0, b: 0, a: 0.5)
         self.addSubview(backgroudView)
         
+        backgroudLabel = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        
         if isIPhoneX() {
             foregroundView = UIView(frame: CGRect(x: 0, y: frame.height-(260+44+20), width: frame.width, height: 260+44+20))
         }else {
@@ -54,11 +78,10 @@ class JLAlarmClockRepeatCustomView: UIView,PGPickerViewDelegate,PGPickerViewData
         foregroundView.backgroundColor = .white
         self.addSubview(foregroundView)
         
-        pickerView = PGPickerView(frame: CGRect(x: 0, y: 0, width: frame.width, height: 260))
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        pickerView.type = .type1
-        pickerView.isHiddenMiddleText = false
+        for tag in 0...4 {
+            pickerViews.append(setupPGPickerView(tag: tag))
+        }
+        pickerView = pickerViews[segmentIndex]
         foregroundView.addSubview(pickerView)
         
         segmentedControl = HMSegmentedControl(frame: CGRect(x: 0, y: 260, width: frame.width, height: 44))
