@@ -19,7 +19,7 @@ class JLAlarmClockInputTitleViewController: JLBaseTableViewController {
     
     private var textField: UITextField!
     private func setupTextField() {
-        textField = UITextField(frame: CGRect(x: 20, y: 0, width: screenWidth()-40, height: 44))
+        textField = UITextField(frame: CGRect(x: 20, y: 0, width: screenWidth-40, height: 44))
         textField.placeholder = "起床闹钟"
         if alarmClockTitle != nil {
             textField.text = alarmClockTitle

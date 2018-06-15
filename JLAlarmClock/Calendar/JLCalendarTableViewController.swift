@@ -17,7 +17,7 @@ class JLCalendarTableViewController: JLBaseTableViewController {
         super.viewDidLoad()
 
         self.title = "日历"
-        calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: screenWidth(), height: 300))
+        calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 300))
         /*
         let localNotMgr = JLLocalNotificationManager.shared
         localNotMgr.registerLocalNotification()

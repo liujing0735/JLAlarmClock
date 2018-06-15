@@ -103,6 +103,8 @@ enum JLSQLiteConstraint: String {
     case Check = "check"            // 检查，确保列中的所有值均满足条件
     case DefaultInt0 = "default 0"  // 默认整型 0
     case DefaultInt1 = "default 1"  // 默认整型 1
+    case DefaultDouble0 = "default 0.0"  // 默认浮点型 0
+    case DefaultDouble1 = "default 1.0"  // 默认浮点型 1
     case DefaultString = "default '0000000'"  // 默认字符 '0000000'
     case DefaultTimestamp = "default current_timestamp"// 默认当前时间
 }

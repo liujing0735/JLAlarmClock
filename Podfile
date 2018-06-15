@@ -21,8 +21,9 @@ def common_pods
     #pod 'SDWebImage', '~>3.8'
     #pod 'SlideMenuControllerSwift'
     pod 'IQKeyboardManagerSwift'
-    pod 'PGDatePicker', '>= 2.0.6' #日期选择器
-    pod 'Segmentio', '~> 3.0' #分段选择器
+    pod 'PGDatePicker' #日期选择器
+    #pod 'Segmentio', '~> 3.0' #滑动分段选择器
+    pod 'HMSegmentedControl' #分段选择器
 end
 
 target 'JLAlarmClock' do

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "33C1C92B1A21D4CA1699591AB30DDC6C"
+               BlueprintIdentifier = "0F05F8CD055D5248540028ECE00A7155"
                BuildableName = "Pods_JLAlarmClock.framework"
                BlueprintName = "Pods-JLAlarmClock"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "33C1C92B1A21D4CA1699591AB30DDC6C"
+            BlueprintIdentifier = "0F05F8CD055D5248540028ECE00A7155"
             BuildableName = "Pods_JLAlarmClock.framework"
             BlueprintName = "Pods-JLAlarmClock"
             ReferencedContainer = "container:Pods.xcodeproj">

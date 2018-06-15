@@ -58,16 +58,16 @@ class JLBaseTableViewController: JLBaseViewController,UITableViewDelegate,UITabl
             let right = self.view.safeAreaInsets.right
             
             if isIPhoneX() {
-                self.tableView.frame = CGRect(x: left, y: 44 + 44 + top, width: screenWidth() - left - right, height: screenHeight() - (44 + 44 + top) - bottom)
+                self.tableView.frame = CGRect(x: left, y: 44 + 44 + top, width: screenWidth - left - right, height: screenHeight - (44 + 44 + top) - bottom)
             }else {
-                self.tableView.frame = CGRect(x: left, y: 20 + 44 + top, width: screenWidth() - left - right, height: screenHeight() - (20 + 44 + top) - bottom)
+                self.tableView.frame = CGRect(x: left, y: 20 + 44 + top, width: screenWidth - left - right, height: screenHeight - (20 + 44 + top) - bottom)
             }
         }else {
             let parent: AnyObject! = self.parent
             if parent != nil && parent is UITabBarController {
-                self.tableView.frame = CGRect(x: 0, y: 20 + 44, width: screenWidth(), height: screenHeight() - (20 + 44 + 49))
+                self.tableView.frame = CGRect(x: 0, y: 20 + 44, width: screenWidth, height: screenHeight - (20 + 44 + 49))
             }else {
-                self.tableView.frame = CGRect(x: 0, y: 20 + 44, width: screenWidth(), height: screenHeight() - (20 + 44))
+                self.tableView.frame = CGRect(x: 0, y: 20 + 44, width: screenWidth, height: screenHeight - (20 + 44))
             }
         }
     }
