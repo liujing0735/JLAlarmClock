@@ -30,9 +30,14 @@ class JLAlarmClockTableViewCell: UITableViewCell {
     func reloadData(dict: Dictionary<String, Any>) {
         let timeString = dict["alarm_clock_time"] as! String
         let times = timeString.components(separatedBy: " ")[1].components(separatedBy: ":")
-        timeLabel.text = "\(times[0]):\(times[1])"
+        var temp = "\(times[0]):\(times[1])"
+        temp = temp.replacingOccurrences(of: "1", with: " 1")
+        timeLabel.text = temp//"\(times[0]):\(times[1])"
         titleLabel.text = dict["alarm_clock_name"] as? String
-        detailLabel.text = timeString.components(separatedBy: " ")[0]
+        
+        let repeatInterval = JLRepeatInterval(rawValue: dict["alarm_clock_repeats_interval"] as! Int)
+        let weekdaySelect = JLWeekdaySelect(string: dict["alarm_clock_repeats_weekday"] as! String)
+        detailLabel.text = repeatsName(repeatInterval: repeatInterval!, weekdaySelect: weekdaySelect)
         alarmClockSwitch.isOn = Bool(exactly: dict["alarm_clock_state"] as! NSNumber)!
     }
     
@@ -43,17 +48,17 @@ class JLAlarmClockTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         
-        timeLabel.frame = CGRect(x: 10, y: (60-31)/2, width: 60, height: 31)
+        timeLabel.frame = CGRect(x: 10, y: (60-31)/2, width: 75, height: 31)
         timeLabel.textColor = UIColor.gray
-        timeLabel.font = UIFont.systemFont(ofSize: 21)
+        timeLabel.font = UIFont(name: "LetsgoDigital-Regular", size: 26)
         self.addSubview(timeLabel)
         
-        titleLabel.frame = CGRect(x: 60+20, y: 10, width: 151, height: 20)
+        titleLabel.frame = CGRect(x: 75+10, y: 10, width: 151, height: 20)
         titleLabel.textColor = UIColor.black
         titleLabel.font = UIFont.systemFont(ofSize: 17)
         self.addSubview(titleLabel)
         
-        detailLabel.frame = CGRect(x: 60+20, y: 10+20, width: 151, height: 20)
+        detailLabel.frame = CGRect(x: 75+10, y: 10+20, width: 151, height: 20)
         detailLabel.textColor = UIColor.lightGray
         detailLabel.font = UIFont.systemFont(ofSize: 13)
         self.addSubview(detailLabel)

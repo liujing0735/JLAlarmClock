@@ -18,22 +18,34 @@ struct JLWeekdaySelect {
     var isFri: Bool = false
     var isSat: Bool = false
 
+    init() {
+        
+    }
+    
+    init(string: String) {
+        value(string: string)
+    }
+    
     var string: String {
         set {
             if newValue.count == 7 {
-                let values = newValue.strings()
-                isSun = Bool(exactly: NSNumber(value: Int(values[0])!))!
-                isMon = Bool(exactly: NSNumber(value: Int(values[1])!))!
-                isTue = Bool(exactly: NSNumber(value: Int(values[2])!))!
-                isWed = Bool(exactly: NSNumber(value: Int(values[3])!))!
-                isThu = Bool(exactly: NSNumber(value: Int(values[4])!))!
-                isFri = Bool(exactly: NSNumber(value: Int(values[5])!))!
-                isSat = Bool(exactly: NSNumber(value: Int(values[6])!))!
+                value(string: newValue)
             }
         }
         get {
             return "\((isSun ? "1" : "0"))\((isMon ? "1" : "0"))\((isTue ? "1" : "0"))\((isWed ? "1" : "0"))\((isThu ? "1" : "0"))\((isFri ? "1" : "0"))\((isSat ? "1" : "0"))"
         }
+    }
+    
+    private mutating func value(string: String) {
+        let values = string.strings()
+        isSun = Bool(exactly: NSNumber(value: Int(values[0])!))!
+        isMon = Bool(exactly: NSNumber(value: Int(values[1])!))!
+        isTue = Bool(exactly: NSNumber(value: Int(values[2])!))!
+        isWed = Bool(exactly: NSNumber(value: Int(values[3])!))!
+        isThu = Bool(exactly: NSNumber(value: Int(values[4])!))!
+        isFri = Bool(exactly: NSNumber(value: Int(values[5])!))!
+        isSat = Bool(exactly: NSNumber(value: Int(values[6])!))!
     }
 }
 
