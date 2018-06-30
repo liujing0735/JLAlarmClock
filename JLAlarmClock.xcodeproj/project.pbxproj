@@ -12,6 +12,7 @@
 		223A38F120A7D94E00A431BA /* JLLocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A38ED20A7D94D00A431BA /* JLLocalNotificationManager.swift */; };
 		223A38F220A7D94E00A431BA /* JLSQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A38EE20A7D94D00A431BA /* JLSQLiteManager.swift */; };
 		223A38F420A7FC4500A431BA /* JLAlarmClockRepeatCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A38F320A7FC4500A431BA /* JLAlarmClockRepeatCustomView.swift */; };
+		224A6AC020E68110000A5867 /* Farrington-7B-Qiqi-.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 224A6ABF20E68110000A5867 /* Farrington-7B-Qiqi-.ttf */; };
 		2270E8DD1F301CD200979959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270E8DC1F301CD200979959 /* AppDelegate.swift */; };
 		2270E8E61F301CD200979959 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2270E8E51F301CD200979959 /* Assets.xcassets */; };
 		2270E8E91F301CD300979959 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2270E8E71F301CD200979959 /* LaunchScreen.storyboard */; };
@@ -29,8 +30,6 @@
 		22BBAA931F42967C00242E50 /* JLAlarmClockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA8E1F42967C00242E50 /* JLAlarmClockTableViewController.swift */; };
 		22BBAA941F42967C00242E50 /* JLCalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBAA901F42967C00242E50 /* JLCalendarTableViewController.swift */; };
 		22C34FF420E4FE7600CE2442 /* JLAlarmClockUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C34FF320E4FE7600CE2442 /* JLAlarmClockUtility.swift */; };
-		22C34FF920E5086600CE2442 /* UnidreamLED.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C34FF720E5086600CE2442 /* UnidreamLED.ttf */; };
-		22C34FFB20E50AA700CE2442 /* LetsgoDigital-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C34FFA20E50AA700CE2442 /* LetsgoDigital-Regular.ttf */; };
 		22C8C15320282DEB004439AA /* JLAlarmClockRepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C8C15220282DEB004439AA /* JLAlarmClockRepeatTableViewController.swift */; };
 		22C8C15720294D5E004439AA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C8C15620294D5E004439AA /* libsqlite3.tbd */; };
 		CBD7D3AFC3214DB814DBD0C1 /* Pods_JLAlarmClock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38CB23FA1D7DE612B6E96CA9 /* Pods_JLAlarmClock.framework */; };
@@ -59,6 +58,7 @@
 		223A38ED20A7D94D00A431BA /* JLLocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLLocalNotificationManager.swift; sourceTree = "<group>"; };
 		223A38EE20A7D94D00A431BA /* JLSQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLSQLiteManager.swift; sourceTree = "<group>"; };
 		223A38F320A7FC4500A431BA /* JLAlarmClockRepeatCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockRepeatCustomView.swift; sourceTree = "<group>"; };
+		224A6ABF20E68110000A5867 /* Farrington-7B-Qiqi-.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Farrington-7B-Qiqi-.ttf"; sourceTree = "<group>"; };
 		2270E8D91F301CD200979959 /* JLAlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLAlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2270E8DC1F301CD200979959 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2270E8E51F301CD200979959 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,8 +85,6 @@
 		22BBAA901F42967C00242E50 /* JLCalendarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLCalendarTableViewController.swift; sourceTree = "<group>"; };
 		22BBAA951F42E0BA00242E50 /* JLAlarmClock-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JLAlarmClock-Bridging-Header.h"; sourceTree = "<group>"; };
 		22C34FF320E4FE7600CE2442 /* JLAlarmClockUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockUtility.swift; sourceTree = "<group>"; };
-		22C34FF720E5086600CE2442 /* UnidreamLED.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UnidreamLED.ttf; sourceTree = "<group>"; };
-		22C34FFA20E50AA700CE2442 /* LetsgoDigital-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LetsgoDigital-Regular.ttf"; sourceTree = "<group>"; };
 		22C8C15220282DEB004439AA /* JLAlarmClockRepeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLAlarmClockRepeatTableViewController.swift; sourceTree = "<group>"; };
 		22C8C15620294D5E004439AA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		38CB23FA1D7DE612B6E96CA9 /* Pods_JLAlarmClock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JLAlarmClock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,8 +234,7 @@
 		22C34FF520E5086600CE2442 /* TTF */ = {
 			isa = PBXGroup;
 			children = (
-				22C34FFA20E50AA700CE2442 /* LetsgoDigital-Regular.ttf */,
-				22C34FF720E5086600CE2442 /* UnidreamLED.ttf */,
+				224A6ABF20E68110000A5867 /* Farrington-7B-Qiqi-.ttf */,
 			);
 			path = TTF;
 			sourceTree = "<group>";
@@ -371,8 +368,7 @@
 				2270E8E91F301CD300979959 /* LaunchScreen.storyboard in Resources */,
 				22960B56209C98BC00960C8B /* InfoPlist.strings in Resources */,
 				2270E8E61F301CD200979959 /* Assets.xcassets in Resources */,
-				22C34FFB20E50AA700CE2442 /* LetsgoDigital-Regular.ttf in Resources */,
-				22C34FF920E5086600CE2442 /* UnidreamLED.ttf in Resources */,
+				224A6AC020E68110000A5867 /* Farrington-7B-Qiqi-.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

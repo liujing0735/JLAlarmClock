@@ -30,9 +30,7 @@ class JLAlarmClockTableViewCell: UITableViewCell {
     func reloadData(dict: Dictionary<String, Any>) {
         let timeString = dict["alarm_clock_time"] as! String
         let times = timeString.components(separatedBy: " ")[1].components(separatedBy: ":")
-        var temp = "\(times[0]):\(times[1])"
-        temp = temp.replacingOccurrences(of: "1", with: " 1")
-        timeLabel.text = temp//"\(times[0]):\(times[1])"
+        timeLabel.text = "\(times[0]):\(times[1])"
         titleLabel.text = dict["alarm_clock_name"] as? String
         
         let repeatInterval = JLRepeatInterval(rawValue: dict["alarm_clock_repeats_interval"] as! Int)
@@ -50,7 +48,7 @@ class JLAlarmClockTableViewCell: UITableViewCell {
         
         timeLabel.frame = CGRect(x: 10, y: (60-31)/2, width: 75, height: 31)
         timeLabel.textColor = UIColor.gray
-        timeLabel.font = UIFont(name: "LetsgoDigital-Regular", size: 26)
+        timeLabel.font = UIFont(name: "Farrington-7B-Qiqi-", size: 21)
         self.addSubview(timeLabel)
         
         titleLabel.frame = CGRect(x: 75+10, y: 10, width: 151, height: 20)
@@ -70,6 +68,8 @@ class JLAlarmClockTableViewCell: UITableViewCell {
         singleLine.frame = CGRect(x: 0, y: 60-0.2, width: UIScreen.main.bounds.width, height: 0.2)
         singleLine.backgroundColor = UIColor.lightGray
         self.addSubview(singleLine)
+        
+        fontName()
     }
     
     required init?(coder aDecoder: NSCoder) {
